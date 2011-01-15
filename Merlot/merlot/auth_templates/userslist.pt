@@ -1,0 +1,55 @@
+<div id="users-container"
+     xmlns:tal="http://xml.zope.org/namespaces/tal"
+     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+     i18n:domain="merlot">
+
+<h1 i18n:translate="">Users</h1>
+<div id="context-bar">
+    <div class="filter-bar">
+        <form id="filter-form" action="" i18n:translate="">
+            Search: <input i18n:name="search_field" index="0" type="text" size="15" maxlength="15" value="" id="filter-search" name="filter"/>
+        </form>
+    </div>
+    <div class="actions">
+        <a class="add-button"
+           href=""
+           tal:attributes="href python:view.url(context)+'/@@add-user'"
+           i18n:translate="">
+           Add new User
+        </a>
+    </div>
+</div>
+<div class="results row">
+<table tal:condition="view/users" id="listing-table">
+  <thead>
+    <tr>
+      <th i18n:translate="">Username</th>
+      <th class="searchable" i18n:translate="">Real name</th>
+      <th i18n:translate="">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr tal:repeat="user view/users">
+      <td tal:content="user/name">type</td>
+      <td tal:content="user/real_name">type</td>
+      <td>
+        <a href=""
+           tal:attributes="href string:${view/application_url}/@@edit-user?login=${user/name}"
+           i18n:translate="edit_action">
+           Edit
+        </a> |
+        <a href=""
+           tal:attributes="href string:${view/application_url}/@@confirm-delete?context=user&id=${user/name}"
+           i18n:translate="delete_action">
+           Delete
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div tal:condition="not: view/users" i18n:translate="" class="empty-listing">
+  There are currently no users.
+</div>
+
+</div>

@@ -1,0 +1,50 @@
+<div id="clients-container"
+     xmlns:tal="http://xml.zope.org/namespaces/tal"
+     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+     i18n:domain="merlot">
+  <h1 i18n:translate="">Clients</h1>
+  <div id="context-bar">
+    <div class="filter-bar">
+      <form id="filter-form" action="" i18n:translate="">
+        Search: <input i18n:name="search_field" index="0" type="text" size="15" maxlength="15" value="" id="filter-search" name="filter"/>
+      </form>
+    </div>
+    <div class="actions">
+      <a class="add-button"
+         href=""
+         tal:attributes="href python:view.url(context)+'/@@add-client'"
+         i18n:translate="">
+        Add new Client
+      </a>
+    </div>
+  </div>
+    <tal:orgs condition="context/items">
+      <div class="results row">
+      <table id="listing-table">
+        <thead>
+          <tr>
+            <th class="searchable" i18n:translate="">Title</th>
+            <th i18n:translate="">Type</th>
+            <th i18n:translate="">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tal:block repeat="org context">
+            <tr>
+              <td><a class="linkeable" href="" tal:content="python:context[org].title"
+                             tal:attributes="href org"/></td>
+              <td tal:content="python:context[org].type" />
+              <td>
+                <a href="" tal:attributes="href string:${org}/edit" i18n:translate="">Edit</a> |
+                <a href="" tal:attributes="href string:${org}/confirm-delete" i18n:translate="">Delete</a>
+              </td>
+            </tr>
+          </tal:block>
+        </tbody>
+      </table>
+      </div>
+    </tal:orgs>
+    <div tal:condition="not: context/items" i18n:translate="" class="empty-listing">
+        There are currently no clients.
+    </div>
+</div>

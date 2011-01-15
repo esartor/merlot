@@ -1,0 +1,659 @@
+##############################################################################
+#
+# Copyright (c) 2003-2004 Zope Foundation and Contributors.
+# All Rights Reserved.
+#
+# This software is subject to the provisions of the Zope Public License,
+# Version 2.1 (ZPL).  A copy of the ZPL should accompany this distribution.
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
+# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
+# FOR A PARTICULAR PURPOSE.
+#
+##############################################################################
+msgid ""
+msgstr ""
+"Project-Id-Version: Development/Unknown\n"
+"POT-Creation-Date: Sun Jan  2 00:45:58 2011\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Zope 3 Developers <zope-dev@zope.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: zope/app/locales/extract.py\n"
+
+#: merlot/app.py:155
+#: merlot/client_templates/client_index.pt:29
+msgid "Projects"
+msgstr ""
+
+#: merlot/app.py:159
+#: merlot/reports_templates/reports_index.pt:5
+msgid "Reports"
+msgstr ""
+
+#: merlot/app.py:163
+#: merlot/client_templates/clientcontainer_index.pt:5
+msgid "Clients"
+msgstr ""
+
+#: merlot/app.py:167
+#: merlot/auth_templates/userslist.pt:6
+#: merlot/reports_templates/tasksreport_viewlet.pt:24
+msgid "Users"
+msgstr ""
+
+#: merlot/app.py:298
+msgid "Not authorized!"
+msgstr ""
+
+#: merlot/app.py:340
+#: merlot/client_templates/clientcontainer_index.pt:39
+#: merlot/simple_templates/project_index.pt:134
+#: merlot/simple_templates/task_index.pt:106
+#: merlot/reports_templates/logsreport_viewlet.pt:37
+#: merlot/reports_templates/tasksreport_viewlet.pt:46
+msgid "Delete"
+msgstr ""
+
+#: merlot/app.py:356
+msgid "Cancel"
+msgstr ""
+
+#: merlot/app.py:43
+msgid "Merlot -- Project Management System"
+msgstr ""
+
+#: merlot/app_templates/dashboard.pt:10
+#: merlot/simple_templates/projectcontainer_index.pt:9
+msgid "Filter:"
+msgstr ""
+
+#: merlot/app_templates/dashboard.pt:13
+#: merlot/simple_templates/projectcontainer_index.pt:12
+msgid "Per status"
+msgstr ""
+
+#: merlot/app_templates/dashboard.pt:25
+#: merlot/auth_templates/userslist.pt:10
+#: merlot/client_templates/clientcontainer_index.pt:9
+#: merlot/simple_templates/project_index.pt:84
+#: merlot/simple_templates/projectcontainer_index.pt:24
+msgid "Search: ${search_field}"
+msgstr ""
+
+#: merlot/app_templates/dashboard.pt:32
+#: merlot/simple_templates/project_index.pt:102
+msgid "Fav"
+msgstr ""
+
+#: merlot/app_templates/dashboard.pt:34
+#: merlot/simple_templates/project_container_listing_template.pt:8
+msgid "Title and description"
+msgstr ""
+
+#: merlot/app_templates/dashboard.pt:5
+msgid "Dashboard"
+msgstr ""
+
+#: merlot/app_templates/dashboard.pt:63
+msgid "Log Time"
+msgstr ""
+
+#: merlot/app_templates/dashboard.pt:7
+msgid "My tasks"
+msgstr ""
+
+#: merlot/app_templates/footer.pt:5
+msgid "Merlot -- Project Management System &copy; 2010 Menttes"
+msgstr ""
+
+#: merlot/app_templates/pathbar.pt:7
+msgid "You are here: ${path}"
+msgstr ""
+
+#: merlot/app_templates/personalbar.pt:10
+msgid "Logout"
+msgstr ""
+
+#: merlot/app_templates/personalbar.pt:6
+msgid "Logged in as:"
+msgstr ""
+
+#: merlot/auth.py:108
+msgid "You are now logged out"
+msgstr ""
+
+#: merlot/auth.py:220
+#: merlot/auth.py:224
+msgid "Add user"
+msgstr ""
+
+#: merlot/auth.py:228
+msgid "User added."
+msgstr ""
+
+#: merlot/auth.py:262
+msgid "Edit user"
+msgstr ""
+
+#: merlot/auth.py:266
+#: merlot/client.py:121
+#: merlot/simple.py:189
+msgid "Save"
+msgstr ""
+
+#: merlot/auth.py:275
+#: merlot/client.py:125
+#: merlot/simple.py:194
+#: merlot/simple.py:381
+#: merlot/simple.py:621
+msgid "Changes saved."
+msgstr ""
+
+#: merlot/auth.py:326
+msgid "User deleted."
+msgstr ""
+
+#: merlot/auth.py:328
+msgid "User not found."
+msgstr ""
+
+#: merlot/auth.py:49
+#: merlot/auth.py:58
+msgid "Login"
+msgstr ""
+
+#: merlot/auth.py:66
+msgid "You are logged in."
+msgstr ""
+
+#: merlot/auth.py:68
+msgid "Login failed."
+msgstr ""
+
+#: merlot/auth_templates/userslist.pt:14
+msgid "Add new User"
+msgstr ""
+
+#: merlot/auth_templates/userslist.pt:28
+#: merlot/client_templates/clientcontainer_index.pt:28
+#: merlot/simple_templates/project_index.pt:109
+#: merlot/simple_templates/task_index.pt:90
+#: merlot/reports_templates/logsreport_viewlet.pt:19
+#: merlot/reports_templates/tasksreport_viewlet.pt:26
+msgid "Actions"
+msgstr ""
+
+#: merlot/auth_templates/userslist.pt:36
+#. Default: "Edit"
+msgid "edit_action"
+msgstr ""
+
+#: merlot/auth_templates/userslist.pt:41
+#. Default: "Delete"
+msgid "delete_action"
+msgstr ""
+
+#: merlot/auth_templates/userslist.pt:51
+msgid "There are no users"
+msgstr ""
+
+#: merlot/client.py:115
+msgid "Edit the client"
+msgstr ""
+
+#: merlot/client.py:185
+msgid "Client deleted."
+msgstr ""
+
+#: merlot/client.py:188
+msgid "This client cannot be deleted because it has projects associated"
+msgstr ""
+
+#: merlot/client.py:65
+msgid "Create a new client"
+msgstr ""
+
+#: merlot/client.py:67
+msgid "Add client"
+msgstr ""
+
+#: merlot/client.py:80
+msgid "Client added."
+msgstr ""
+
+#: merlot/client_templates/client_index.pt:17
+#. Default: "delete"
+msgid "img_alt_delete_action"
+msgstr ""
+
+#: merlot/client_templates/client_index.pt:17
+msgid "${img}Delete"
+msgstr ""
+
+#: merlot/client_templates/client_index.pt:26
+msgid "Client view: ${title}"
+msgstr ""
+
+#: merlot/client_templates/client_index.pt:40
+msgid "Start Date"
+msgstr ""
+
+#: merlot/client_templates/client_index.pt:41
+msgid "End Date"
+msgstr ""
+
+#: merlot/client_templates/client_index.pt:57
+msgid "This client has no projects"
+msgstr ""
+
+#: merlot/client_templates/client_index.pt:9
+#. Default: "edit"
+msgid "img_alt_edit_action"
+msgstr ""
+
+#: merlot/client_templates/client_index.pt:9
+msgid "${img}Edit"
+msgstr ""
+
+#: merlot/client_templates/clientcontainer_index.pt:13
+msgid "Add new Client"
+msgstr ""
+
+#: merlot/client_templates/clientcontainer_index.pt:38
+#: merlot/simple_templates/project_index.pt:129
+#: merlot/simple_templates/task_index.pt:101
+#: merlot/reports_templates/logsreport_viewlet.pt:32
+#: merlot/reports_templates/tasksreport_viewlet.pt:41
+msgid "Edit"
+msgstr ""
+
+#: merlot/client_templates/clientcontainer_index.pt:45
+msgid "There are no clients"
+msgstr ""
+
+#: merlot/interfaces.py:102
+msgid "Passwords does not match"
+msgstr ""
+
+#: merlot/interfaces.py:107
+msgid "Invalid user name, only characters in [a-z0-9] are allowed"
+msgstr ""
+
+#: merlot/interfaces.py:124
+msgid "ID"
+msgstr ""
+
+#: merlot/interfaces.py:125
+msgid "Creator"
+msgstr ""
+
+#: merlot/interfaces.py:126
+msgid "Creation date"
+msgstr ""
+
+#: merlot/interfaces.py:127
+msgid "Modification date"
+msgstr ""
+
+#: merlot/interfaces.py:137
+#: merlot/interfaces.py:165
+#: merlot/interfaces.py:189
+#: merlot/simple_templates/task_index.pt:87
+#: merlot/reports_templates/logsreport_viewlet.pt:16
+msgid "Description"
+msgstr ""
+
+#: merlot/interfaces.py:139
+#: merlot/interfaces.py:167
+#: merlot/client_templates/client_index.pt:42
+msgid "Status"
+msgstr ""
+
+#: merlot/interfaces.py:141
+msgid "The status the project is in"
+msgstr ""
+
+#: merlot/interfaces.py:147
+#: merlot/interfaces.py:174
+#: merlot/simple_templates/project_index.pt:104
+msgid "Start date"
+msgstr ""
+
+#: merlot/interfaces.py:150
+#: merlot/interfaces.py:177
+#: merlot/simple_templates/project_index.pt:105
+msgid "End date"
+msgstr ""
+
+#: merlot/interfaces.py:151
+msgid "Client"
+msgstr ""
+
+#: merlot/interfaces.py:159
+#: merlot/interfaces.py:185
+msgid "Start date must preceed end date"
+msgstr ""
+
+#: merlot/interfaces.py:169
+msgid "The status the task is in"
+msgstr ""
+
+#: merlot/interfaces.py:178
+msgid "Hours estimate"
+msgstr ""
+
+#: merlot/interfaces.py:179
+#: merlot/interfaces.py:196
+msgid "Remaining hours"
+msgstr ""
+
+#: merlot/interfaces.py:191
+#: merlot/simple_templates/task_index.pt:88
+#: merlot/reports_templates/logsreport_viewlet.pt:17
+msgid "Date"
+msgstr ""
+
+#: merlot/interfaces.py:195
+msgid "Worked hours"
+msgstr ""
+
+#: merlot/interfaces.py:22
+#: merlot/interfaces.py:132
+#: merlot/interfaces.py:136
+#: merlot/interfaces.py:164
+#: merlot/interfaces.py:225
+#: merlot/interfaces.py:229
+#: merlot/client_templates/client_index.pt:39
+msgid "Title"
+msgstr ""
+
+#: merlot/interfaces.py:23
+#: merlot/interfaces.py:163
+#: merlot/interfaces.py:224
+msgid "Next ID"
+msgstr ""
+
+#: merlot/interfaces.py:231
+#: merlot/client_templates/clientcontainer_index.pt:27
+msgid "Type"
+msgstr ""
+
+#: merlot/interfaces.py:233
+msgid "The client type"
+msgstr ""
+
+#: merlot/interfaces.py:263
+#: merlot/interfaces.py:286
+#: merlot/app_templates/dashboard.pt:35
+#: merlot/reports_templates/logsreport_viewlet.pt:14
+msgid "Project"
+msgstr ""
+
+#: merlot/interfaces.py:269
+#: merlot/interfaces.py:292
+msgid "From"
+msgstr ""
+
+#: merlot/interfaces.py:273
+#: merlot/interfaces.py:296
+msgid "To"
+msgstr ""
+
+#: merlot/interfaces.py:277
+#: merlot/interfaces.py:300
+#: merlot/simple_templates/task_index.pt:86
+#: merlot/reports_templates/logsreport_viewlet.pt:13
+msgid "User"
+msgstr ""
+
+#: merlot/interfaces.py:81
+#: merlot/interfaces.py:87
+#: merlot/interfaces.py:93
+#: merlot/interfaces.py:194
+#: merlot/auth_templates/userslist.pt:26
+msgid "Username"
+msgstr ""
+
+#: merlot/interfaces.py:82
+#: merlot/interfaces.py:94
+#: merlot/auth_templates/userslist.pt:27
+msgid "Real name"
+msgstr ""
+
+#: merlot/interfaces.py:83
+#: merlot/interfaces.py:89
+#: merlot/interfaces.py:95
+#: merlot/interfaces.py:118
+msgid "Password"
+msgstr ""
+
+#: merlot/interfaces.py:96
+#: merlot/interfaces.py:119
+msgid "Confirm password"
+msgstr ""
+
+#: merlot/log_templates/add_log_ajax_form.pt:11
+msgid "hours:"
+msgstr ""
+
+#: merlot/log_templates/add_log_ajax_form.pt:15
+msgid "remain:"
+msgstr ""
+
+#: merlot/log_templates/add_log_ajax_form.pt:20
+msgid "description:"
+msgstr ""
+
+#: merlot/log_templates/add_log_ajax_form.pt:24
+msgid "date:"
+msgstr ""
+
+#: merlot/reports.py:151
+msgid "Run tasks report"
+msgstr ""
+
+#: merlot/reports.py:56
+msgid "Run logs report"
+msgstr ""
+
+#: merlot/reports.py:58
+#: merlot/reports.py:203
+msgid "Submit"
+msgstr ""
+
+#: merlot/reports_templates/logsreport_viewlet.pt:15
+#: merlot/reports_templates/tasksreport_viewlet.pt:23
+msgid "Task"
+msgstr ""
+
+#: merlot/reports_templates/logsreport_viewlet.pt:51
+msgid "Total hours:"
+msgstr ""
+
+#: merlot/reports_templates/logsreport_viewlet.pt:60
+#: merlot/reports_templates/tasksreport_viewlet.pt:69
+msgid "Download CSV"
+msgstr ""
+
+#: merlot/reports_templates/reports_index.pt:11
+msgid "Logs report"
+msgstr ""
+
+#: merlot/reports_templates/reports_index.pt:15
+msgid "Query the log entries in a range of dates filtering by project and user. The results are presented in a flat table."
+msgstr ""
+
+#: merlot/reports_templates/reports_index.pt:20
+msgid "Tasks report"
+msgstr ""
+
+#: merlot/reports_templates/reports_index.pt:24
+msgid "Query the tasks worked by a user (or all of them) in a range of dates. The results are presented ordered by project and by task, showing the total amount of hours used for each task and listing the users that logged some time in that task. A sum of hours worked in the project during the period being queried is also displayed."
+msgstr ""
+
+#: merlot/reports_templates/reports_index.pt:8
+msgid "See below a list of the available reports."
+msgstr ""
+
+#: merlot/reports_templates/tasksreport_viewlet.pt:57
+#: merlot/reports_templates/tasksreport_viewlet.pt:65
+msgid "Total Hours:"
+msgstr ""
+
+#: merlot/simple.py:120
+msgid "Create a new project"
+msgstr ""
+
+#: merlot/simple.py:122
+msgid "Add project"
+msgstr ""
+
+#: merlot/simple.py:141
+msgid "Project added."
+msgstr ""
+
+#: merlot/simple.py:182
+msgid "Edit the project"
+msgstr ""
+
+#: merlot/simple.py:270
+msgid "Project deleted."
+msgstr ""
+
+#: merlot/simple.py:306
+msgid "Create a new task"
+msgstr ""
+
+#: merlot/simple.py:308
+msgid "Add task"
+msgstr ""
+
+#: merlot/simple.py:328
+msgid "Task added."
+msgstr ""
+
+#: merlot/simple.py:369
+msgid "Edit the task"
+msgstr ""
+
+#: merlot/simple.py:467
+msgid "Task deleted."
+msgstr ""
+
+#: merlot/simple.py:511
+msgid "Add log"
+msgstr ""
+
+#: merlot/simple.py:530
+msgid "Log added."
+msgstr ""
+
+#: merlot/simple.py:553
+msgid "Log"
+msgstr ""
+
+#: merlot/simple.py:659
+msgid "Log deleted."
+msgstr ""
+
+#: merlot/simple.py:766
+msgid "You've removed the star from the task"
+msgstr ""
+
+#: merlot/simple.py:769
+msgid "You've marked the task with a star"
+msgstr ""
+
+#: merlot/simple_templates/project_index.pt:106
+msgid "Estimate"
+msgstr ""
+
+#: merlot/simple_templates/project_index.pt:107
+#: merlot/simple_templates/task_index.pt:89
+#: merlot/reports_templates/logsreport_viewlet.pt:18
+#: merlot/reports_templates/tasksreport_viewlet.pt:25
+msgid "Hours"
+msgstr ""
+
+#: merlot/simple_templates/project_index.pt:108
+msgid "My hours"
+msgstr ""
+
+#: merlot/simple_templates/project_index.pt:15
+#: merlot/simple_templates/project_container_listing_template.pt:39
+#: merlot/simple_templates/task_index.pt:15
+msgid "${img} Delete"
+msgstr ""
+
+#: merlot/simple_templates/project_index.pt:22
+msgid "Project view: ${title}"
+msgstr ""
+
+#: merlot/simple_templates/project_index.pt:32
+#: merlot/simple_templates/task_index.pt:34
+msgid "Start date:"
+msgstr ""
+
+#: merlot/simple_templates/project_index.pt:38
+#: merlot/simple_templates/task_index.pt:38
+msgid "End date:"
+msgstr ""
+
+#: merlot/simple_templates/project_index.pt:44
+#: merlot/simple_templates/task_index.pt:50
+msgid "Status:"
+msgstr ""
+
+#: merlot/simple_templates/project_index.pt:59
+#: merlot/simple_templates/task_index.pt:70
+msgid "Total worked hours:"
+msgstr ""
+
+#: merlot/simple_templates/project_index.pt:63
+#: merlot/simple_templates/task_index.pt:74
+msgid "Hours worked by me:"
+msgstr ""
+
+#: merlot/simple_templates/project_index.pt:68
+msgid "Tasks"
+msgstr ""
+
+#: merlot/simple_templates/project_index.pt:88
+msgid "Add new Task"
+msgstr ""
+
+#: merlot/simple_templates/project_index.pt:9
+#: merlot/simple_templates/project_container_listing_template.pt:33
+#: merlot/simple_templates/task_index.pt:9
+msgid "${img} Edit"
+msgstr ""
+
+#: merlot/simple_templates/projectcontainer_index.pt:28
+msgid "Add new Project"
+msgstr ""
+
+#: merlot/simple_templates/task_index.pt:118
+msgid "Add a log"
+msgstr ""
+
+#: merlot/simple_templates/task_index.pt:22
+msgid "Task view: ${title}"
+msgstr ""
+
+#: merlot/simple_templates/task_index.pt:42
+msgid "Estimate:"
+msgstr ""
+
+#: merlot/simple_templates/task_index.pt:46
+msgid "Remaining:"
+msgstr ""
+
+#: merlot/simple_templates/task_index.pt:80
+#: merlot/reports_templates/logsreport_viewlet.pt:8
+#: merlot/reports_templates/tasksreport_viewlet.pt:8
+msgid "Logs"
+msgstr ""
+
