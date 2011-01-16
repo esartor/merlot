@@ -5,7 +5,7 @@ $(document).ready(function() {
         action = $(this).attr('href') + '/@@add-log-ajax';
         log_row = $('<tr class="log-row">'+
                        '<td colspan="'+$('#listing-table th').length+'">'+
-                       '<a class="delete"><img alt="delete" src="/@@/merlot/images/delete.png"></a>'+
+                       '<a class="delete"><img alt="delete" src="/@@/merlot/images/close.png"></a>'+
                          '<div class="ajax-load">'+
                            '<img alt="ajax-load" src="/@@/merlot/images/ajax-load.gif">'+
                          '</div>'+
