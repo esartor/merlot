@@ -31,6 +31,7 @@ Contents
 .. toctree::
    :maxdepth: 2
 
+   changelog
    developer/getting-started
    developer/automated-tests
    developer/source-code-reference
