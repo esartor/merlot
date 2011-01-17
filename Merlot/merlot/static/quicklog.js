@@ -18,7 +18,8 @@ $(document).ready(function() {
         position: ['center', 'left'],
         relative: true,
         events: {
-            def:"click, "
+            def:"click, mouseup",
+            tooltip: "mouseenter"
         },
         onShow: function() {
 		            var action = this.getTrigger().attr('href') + '/@@add-log-ajax';
@@ -41,8 +42,8 @@ $(document).ready(function() {
     });
     //the close button inside the tooltip is going to work hide it
     $('.log-row .delete').click(function(){
-            $(this).closest('tr').removeClass('selected');    
-            $(this).parents('.actions').find('.log-link').tooltip().hide();
+        $(this).closest('tr').removeClass('selected');    
+        $(this).parents('.actions').find('.log-link').tooltip().hide();
     });
     $('.log-link').click(function(e){
         $(this).closest('tr').addClass('selected');
