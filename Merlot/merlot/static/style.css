@@ -582,9 +582,9 @@ td.actions {
 /*DASHBOARD*/
 #dashboard .field-container,
 .log-row .field-container{
-    display:inline;
     position:relative;
     padding-right:15px;
+    padding-bottom:4px;
 }
 #dashboard .field-container .error,
 .log-row .field-container .error{
@@ -594,25 +594,43 @@ td.actions {
 .log-row .field-container .accept{
     background:url("images/accept.png") no-repeat scroll 0 4px transparent;
 }
-#date-translated {
-    position:absolute;
-    left:0px;
-    top:2em;
+.date-translated {
     padding-left:18px;
 }
 /*ajax log box*/
+.log-row {
+    display:none;
+	padding:5px;
+	width:21em;
+	height:15em;
+	background:#EEE url("images/point-arrow.png") no-repeat scroll right center;
+    border: 5px solid #CCCCCC;
+    border-radius:7px 7px 7px 7px;
+    box-shadow:0px 0px 10px #383838;
+    -moz-border-radius:7px 7px 7px 7px;
+    -webkit-border-radius:7px 7px 7px 7px;
+    -moz-box-shadow:0px 0px 10px #383838;
+    -webkit-box-shadow:0px 0px 10px #383838;    
+}
+.log-row form {
+    padding:20px 15px;
+}
+.log-row .ajax-load {
+    display:block;
+}
 .log-row td{
     border-left:1px solid #CCC;
     border-right:1px solid #CCC;
     text-align:left;
 }
 .log-row .delete {
+    cursor: pointer;
     float:right;
     -moz-box-shadow:1px 1px 2px #383838;
     -webkit-box-shadow:1px 1px 2px #383838;
     box-shadow:1px 1px 2px #383838;
     -moz-border-radius: 5px 5px 5px 5px;
-    -webkit-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;    
     border-radius:5px;
 }
 .log-row .delete:hover {
