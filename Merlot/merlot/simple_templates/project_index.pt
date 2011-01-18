@@ -135,16 +135,19 @@
                     <a class="log-link linkeable action edit"
                        tal:attributes="href task"
                        i18n:translate="">
+                       <img i18n:name="img" alt="log time" tal:attributes="src static/images/log-time.png"/>
                        Log Time
                     </a>                
                     <a href=""
                      tal:attributes="href string:${task}/edit"
                      i18n:translate="">
+                    <img i18n:name="img" alt="edit" tal:attributes="src static/images/edit.png"/>                      
                     Edit
                     </a> |
                     <a href=""
                      tal:attributes="href string:${task}/confirm-delete"
                      i18n:translate="">
+                    <img i18n:name="img" alt="delete" tal:attributes="src static/images/delete.png"/>                     
                     Delete
                     </a>
                 </td>

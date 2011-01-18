@@ -100,11 +100,14 @@
                 <a href=""
                    tal:attributes="href string:${log/id}/edit"
                    i18n:translate="">
+                   <img i18n:name="img" alt="edit" tal:attributes="src static/images/edit.png"/>                   
                    Edit
                 </a> |
                 <a href=""
                    tal:attributes="href string:${log/id}/confirm-delete"
-                   i18n:translate="">Delete
+                   i18n:translate="">
+                  <img i18n:name="img" alt="delete" tal:attributes="src static/images/delete.png"/>
+                  Delete
                 </a>
               </td>
             </tr>

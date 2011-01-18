@@ -64,6 +64,7 @@
                             <a class="log-link linkeable action edit"
                                tal:attributes="href task_url"
                                i18n:translate="">
+                                <img i18n:name="img" alt="log time" tal:attributes="src static/images/log-time.png"/>                               
                                Log Time
                             </a>
                         </div>
