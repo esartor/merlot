@@ -9,3 +9,8 @@ Merlot/docs/
 Merlot/coverage/
 Merlot/extends-cache/*
 Merlot/Merlot.egg-info/
+Merlot/docs-source/developer/_doctests/
+
+syntax: glob
+*.pyc
+*.mo
