@@ -11,6 +11,7 @@ from zope.interface import Interface
 from zope import schema
 from zope.component import getUtility, getMultiAdapter
 from zope.security.interfaces import IUnauthorized
+from zope.i18n import translate
 
 from zope.intid import IntIds
 from zope.intid.interfaces import IIntIds
@@ -397,3 +398,34 @@ class ControlPanelViewlet(grok.Viewlet):
     grok.template('control_panel')
     grok.view(ControlPanel)
     grok.order(10)
+
+
+# Based in https://svn.plone.org/svn/collective/Products.PloneFormGen/trunk/Products/PloneFormGen/browser/jsvariables.py
+# thanks Steve McMahon http://www.stevemcmahon.com/
+class I18nJavascript(grok.View):
+    grok.context(Interface)
+    grok.name('i18n-js')
+    grok.require('merlot.Manage')
+
+    def render(self):
+        messages = {
+            'DELETE_I18N': _('delete'),
+            'SUCCESS_I18N': _('Success'),
+            'MORE_I18N': _('More'),
+            'ENTER_DATE_HERE_I18N': _("Enter a date here"),
+            'TYPE_DATE_BELLOW_I18N': _("Type a date bellow"),
+            'TODAY_I18N': _('Today'),
+            'LAST_7_DAYS_I18N': _('Last 7 days'),
+            'MONTH_TO_DATE_I18N': _('Month to date'),
+            'PREVIOUS_MONTH_I18N': _('The previous Month'),
+            'DATE_RANGE_I18N': _('Date Range')}
+        message_variable = "merlot = {};merlot.i18n = {\n%s}\n"
+        response = self.request.response
+        response.setHeader('Content-Type',
+                                'text/javascript; charset=UTF-8')
+        template = ''
+        for key in messages:
+            msg = translate(messages[key], context = self.request).replace("'", "\\'")
+            template = "%s%s: '%s',\n" % (template, key, msg)
+
+        return message_variable % template[:-2]

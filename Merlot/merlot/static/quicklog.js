@@ -3,7 +3,7 @@ $(document).ready(function() {
 
     //lets create a basic structure for the tooltip in the loglinks
     var log_tooltip = $('<div class="tooltip log-row">'+
-                            '<a class="delete"><img alt="delete" src="/@@/merlot/images/close.png"></a>'+
+                            '<a class="delete"><img alt="'+merlot.i18n.DELETE_I18N+'"src="/@@/merlot/images/close.png"></a>'+
                             '<div class="ajax-load">'+
                                 '<img alt="ajax-load" src="/@@/merlot/images/ajax-load.gif">'+
                             '</div>'+
@@ -85,8 +85,8 @@ $(document).ready(function() {
                 success: function(data){
                     row.empty();                
                     row.append('<div class="success">'+
-                                   '<h3><img alt="success" class="success" src="/@@/merlot/images/check.png">Success</h3>'+
-                                   '<a class="more-logs" href="#">More?</a>'+
+                                   '<h3><img alt="success" class="success" src="/@@/merlot/images/check.png">'+merlot.i18n.SUCCESS_I18N+'</h3>'+
+                                   '<a class="more-logs" href="#">'+merlot.i18n.MORE_I18N+'?</a>'+
                                 '</div>');
                     $('.success', row).hide().fadeIn('slow');
                     more_logs_link = $('.more-logs', row);
@@ -112,7 +112,7 @@ $(document).ready(function() {
         // code from http://www.datejs.com/ demos
         var messages = "no match";
         var input = date_input, date_string = date_translated, date = null;
-        var input_empty = "Enter a date here", empty_string = "Type a date bellow";
+        var input_empty = merlot.i18n.ENTER_DATE_HERE_I18N, empty_string = merlot.i18n.TYPE_DATE_BELLOW_I18N;
         input.val(input_empty);
         date_string.text(empty_string);
         input.keyup(

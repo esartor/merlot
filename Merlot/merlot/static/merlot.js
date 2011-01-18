@@ -13,12 +13,12 @@ $(document).ready(function() {
         });
         forms_date_fields.daterangepicker({
         presetRanges: [
-            {text: 'Today', dateStart: 'today', dateEnd: 'today' },
-            {text: 'Last 7 days', dateStart: 'today-7days', dateEnd: 'today' },
-            {text: 'Month to date', dateStart: function(){ return Date.parse('today').moveToFirstDayOfMonth(); }, dateEnd: 'today' },
-            {text: 'The previous Month', dateStart: function(){ return Date.parse('1 month ago').moveToFirstDayOfMonth(); }, dateEnd:function(){ return Date.parse('1 month ago').moveToLastDayOfMonth(); } } 
+            {text: merlot.i18n.TODAY_I18N, dateStart: 'today', dateEnd: 'today' },
+            {text: merlot.i18n.LAST_7_DAYS_I18N, dateStart: 'today-7days', dateEnd: 'today' },
+            {text: merlot.i18n.MONTH_TO_DATE_I18N, dateStart: function(){ return Date.parse('today').moveToFirstDayOfMonth(); }, dateEnd: 'today' },
+            {text: merlot.i18n.PREVIOUS_MONTH_I18N, dateStart: function(){ return Date.parse('1 month ago').moveToFirstDayOfMonth(); }, dateEnd:function(){ return Date.parse('1 month ago').moveToLastDayOfMonth(); } } 
         ],
-        presets: {dateRange: 'Date Range'}, 
+        presets: {dateRange: merlot.i18n.DATE_RANGE_I18N}, 
         dateFormat: dateFormat
         });
 
