@@ -62,10 +62,11 @@
                     <td class="actions">
                         <div class="actions-wrapper">
                             <a class="log-link linkeable action edit"
+                               title="Log Time"
                                tal:attributes="href task_url"
-                               i18n:translate="">
-                                <img i18n:name="img" alt="log time" tal:attributes="src static/images/log-time.png"/>                               
-                               Log Time
+                               i18n:translate=""
+                               i18n:attributes="title log-time-title">
+                                <img i18n:name="img" alt="log time" tal:attributes="src static/images/log-time.png"/>
                             </a>
                         </div>
                     </td>

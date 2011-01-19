@@ -133,22 +133,27 @@
                 <td tal:content="python: '%.2f' % viewlet.tasks_stats[task].getUserWorkedHours()"/>
                 <td class="actions">
                     <a class="log-link linkeable action edit"
+                       title="Log Time"
                        tal:attributes="href task"
-                       i18n:translate="">
+                       i18n:translate=""
+                       i18n:attributes="title log-time-title">
                        <img i18n:name="img" alt="log time" tal:attributes="src static/images/log-time.png"/>
-                       Log Time
                     </a>                
                     <a href=""
-                     tal:attributes="href string:${task}/edit"
-                     i18n:translate="">
+                       title="Edit"
+                       class="action edit"
+                       tal:attributes="href string:${task}/edit"
+                       i18n:translate=""
+                       i18n:attributes="title edit-action-title">
                     <img i18n:name="img" alt="edit" tal:attributes="src static/images/edit.png"/>                      
-                    Edit
-                    </a> |
+                    </a>
                     <a href=""
-                     tal:attributes="href string:${task}/confirm-delete"
-                     i18n:translate="">
+                       title="Delete"
+                       class="action delete"
+                       tal:attributes="href string:${task}/confirm-delete"
+                       i18n:translate=""
+                       i18n:attributes="title delete-action-title">
                     <img i18n:name="img" alt="delete" tal:attributes="src static/images/delete.png"/>                     
-                    Delete
                     </a>
                 </td>
               </tr>

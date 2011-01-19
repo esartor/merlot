@@ -4,20 +4,24 @@
      i18n:domain="merlot">
 
     <a class="action edit"
+       title="Edit"
        tal:attributes="href python: view.url(context) + '/edit'"
-       i18n:translate="">
+       i18n:translate=""
+       i18n:attributes="title edit-action-title">
       <img alt="edit"
            tal:attributes="src static/images/edit.png"
            i18n:attributes="alt img_alt_edit_action"
-           i18n:name="img"/>Edit
+           i18n:name="img"/>
     </a>
     <a class="action delete"
+       title="Delete"
        tal:attributes="href python: view.url(context) + '/confirm-delete'"
-       i18n:translate="">
+       i18n:translate=""
+       i18n:attributes="title delete-action-title">
       <img alt="delete"
            tal:attributes="src static/images/delete.png"
            i18n:attributes="alt img_alt_delete_action"
-           i18n:name="img"/>Delete
+           i18n:name="img"/>
     </a>    
 </div>
 <div id="client">

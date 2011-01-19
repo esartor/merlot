@@ -30,14 +30,20 @@
           <td tal:content="python: '%.2f' % log.hours" />
           <td class="actions">
             <a href=""
+               class="action edit"
+               title="Edit"
                tal:attributes="href python:view.url(log)+'/edit'"
-               i18n:translate="">
-              Edit
-            </a> |
+               i18n:translate=""
+               i18n:attributes="title edit-action-title">
+                <img i18n:name="img" class="icon" alt="edit" tal:attributes="src static/images/edit.png"/>                          
+            </a>
             <a href=""
+               class="action delete"
+               title="Delete"
                tal:attributes="href python:view.url(log)+'/confirm-delete'"
-               i18n:translate="">
-               Delete
+               i18n:translate=""
+               i18n:attributes="title delete-action-title">
+                <img i18n:name="img" class="icon" alt="delete" tal:attributes="src static/images/delete.png"/>
             </a>
           </td>
         </tr>

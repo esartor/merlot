@@ -17,6 +17,7 @@ $(document).ready(function() {
         tipClass:'log-row',
         position: ['center', 'left'],
         relative: true,
+        cancelDefault: false,
         events: {
             def:"click, mouseup",
             tooltip: "mouseenter"

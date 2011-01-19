@@ -34,9 +34,14 @@
               <td><a class="linkeable" href="" tal:content="python:context[org].title"
                              tal:attributes="href org"/></td>
               <td tal:content="python:context[org].type" />
-              <td>
-                <a href="" tal:attributes="href string:${org}/edit" i18n:translate="">Edit</a> |
-                <a href="" tal:attributes="href string:${org}/confirm-delete" i18n:translate="">Delete</a>
+              <td class="actions">
+                <a class="action edit" title="Edit" ref="" tal:attributes="href string:${org}/edit" 
+                    i18n:translate="" i18n:attributes="title edit-action-title">
+                    <img i18n:name="img" class="icon" alt="edit" tal:attributes="src static/images/edit.png"/></a>
+                <a class="action delete" title="Delete" href="" tal:attributes="href string:${org}/confirm-delete" i18n:translate=""
+                    i18n:attributes="title delete-action-title">
+                   <img i18n:name="img" class="icon" alt="delete" tal:attributes="src static/images/delete.png"/>                
+                </a>
               </td>
             </tr>
           </tal:block>

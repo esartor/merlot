@@ -368,8 +368,14 @@ img {
     display:block;
     opacity:1;
 }
-#listing-table .actions .action {
-    padding:10px 10px 10px 0px;
+#listing-table .actions .action,
+#logs-table .actions .action,
+.data-table .actions .action{
+    display: block;
+    float: left;
+    height: 29px;
+    margin: 0 5px 0 0;
+    width: 29px;
 }
 .empty-listing {
     text-align: center;
@@ -528,6 +534,9 @@ td.date {
 }
 td.actions {
     min-width:6em;
+}
+#logs-table .actions {
+    width:6em;
 }
 #logs-table col#description {
     width: 400px;
@@ -689,3 +698,13 @@ td.actions {
 .colapsable h2.active {
     background-position: 0 9px;
 }
+
+/*TOOLTIPS TIPSY*/
+.tipsy { padding: 5px; font-size: 11px; opacity: 0.8; filter: alpha(opacity=80); background-repeat: no-repeat;  background-image: url(images/tipsy.gif); }
+  .tipsy-inner { padding: 5px 8px 4px 8px; background-color: black; color: white; max-width: 200px; text-align: center; }
+  .tipsy-inner { -moz-border-radius:3px; -webkit-border-radius:3px; }
+  .tipsy-north { background-position: top center; }
+  .tipsy-south { background-position: bottom center; }
+  .tipsy-east { background-position: right center; }
+  .tipsy-west { background-position: left center; }
+

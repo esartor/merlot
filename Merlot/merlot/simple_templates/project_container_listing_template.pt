@@ -32,16 +32,18 @@
          <td class="actions">
            <div class="actions-wrapper">
              <a class="action edit"
+                title="Edit"
                 tal:attributes="href python: view.url(context) +'/'+project_id + '/edit'"
-                i18n:translate="">
+                i18n:translate=""
+                i18n:attributes="title edit-action-title">
                <img i18n:name="img" alt="edit" tal:attributes="src static/images/edit.png"/>
-               Edit
              </a>
              <a class="action delete"
+                title="Delete"
                 tal:attributes="href python: view.url(context)+'/'+project_id + '/confirm-delete'"
-                i18n:translate="">
+                i18n:translate=""
+                i18n:attributes="title delete-action-title">
                <img i18n:name="img" alt="delete" tal:attributes="src static/images/delete.png"/>
-               Delete
              </a>
            </div>
           </td>

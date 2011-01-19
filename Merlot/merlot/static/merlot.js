@@ -98,6 +98,14 @@ $(document).ready(function() {
                 }
             });
 
+    //tooltips
+    $('.actions .action').each(function(){
+        var title = $(this).attr('title');
+        $(this).removeAttr('title');
+        $(this).attr('my-attr', title);
+    });
+    $('.actions .action').tipsy({gravity: $.fn.tipsy.autoNS, title: 'my-attr'});            
+
 });
 
 function listingFilter(context, listing_table_id, values_to_filter, selectable, trigger_event){
