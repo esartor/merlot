@@ -118,9 +118,9 @@
                      tal:attributes="href string:${task}/toggle-starred?camefrom=${view/url};
                                      class python:'starred-selected' if context[task] in viewlet.starred_tasks else 'starred-not-selected'"></a>
                 </td>
-                <td class="status">
-                    <span tal:attributes="class python:context[task].status.replace(' ', '').lower()" 
-                          tal:content="python:context[task].status">In progress</span>
+                <td class="status" tal:define="status python:context[task].status">
+                    <span tal:attributes="class python:status.replace(' ', '').lower() if status else 'none'" 
+                          tal:content="python:status">In progress</span>
                 </td>
                 <td><a tal:content="python:context[task].title"
                        tal:attributes="href task"/>

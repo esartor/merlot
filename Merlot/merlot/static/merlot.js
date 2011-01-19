@@ -1,6 +1,11 @@
 var dateFormat = "yy-mm-dd";
 
 $(document).ready(function() {
+
+    // focus in login page
+    $('#login').focus();
+    
+    
     $("#form\\.date").datepicker({"dateFormat": dateFormat});
 
     //PROJECT SELECTION

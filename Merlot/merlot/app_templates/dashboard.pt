@@ -47,9 +47,9 @@
                         <a href="" tal:attributes="href python:task_url + '/toggle-starred?camefrom=' + view.application_url();
                                                    class python:'starred-selected' if task in view.starred_tasks else 'starred-not-selected'"></a>
                     </td>
-                    <td class="status">
-                        <span tal:attributes="class python:task.status.replace(' ', '').lower()" 
-                              tal:content="task/status">In progress</span>
+                    <td class="status" tal:define="status python:task.status">
+                        <span tal:attributes="class python:status.replace(' ', '').lower() if status else ''" 
+                              tal:content="status">In progress</span>
                     </td>
                     <td class="title-and-description">
                         <h4><a tal:attributes="href task_url"

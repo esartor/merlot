@@ -620,7 +620,7 @@ msgstr "Mis horas"
 #: merlot/simple_templates/project_index.pt:135
 #: merlot/app_templates/dashboard.pt:64
 msgid "log-time-title"
-msgstr "Registrar tiempo"
+msgstr "Cargar tiempo"
 
 #: merlot/simple_templates/project_index.pt:165
 #, fuzzy
