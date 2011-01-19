@@ -135,7 +135,7 @@ Let's quickly add another task::
 
 We can delete a task from the project view::
 
-    >>> browser.getLink('Delete', index=2).click()
+    >>> browser.getLink('delete', index=2).click()
     >>> 'Are you sure you want to delete the "Testing" item?' in \
     ...     browser.contents
     True
@@ -255,7 +255,7 @@ The changes persisted::
 
 Logs can also be edited::
 
-    >>> browser.getLink('Edit', index=1).click()
+    >>> browser.getLink('edit', index=1).click()
     >>> browser.getControl(name='form.description').value = 'New description'
     >>> browser.getControl('Save').click()
     >>> 'Changes saved' in browser.contents

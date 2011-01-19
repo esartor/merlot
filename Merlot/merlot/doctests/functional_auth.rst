@@ -102,7 +102,7 @@ Now we log in as admin again to delete the user we created::
     >>> browser.addHeader('Authorization', 'Basic admin:admin')
     >>> browser.open('http://localhost/app')
     >>> browser.getLink('Users').click()
-    >>> browser.getLink('Delete').click()
+    >>> browser.getLink('delete').click()
     >>> 'Are you sure you want to delete the "user" item?' in browser.contents
     True
     >>> browser.getControl('Delete').click()
