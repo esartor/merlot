@@ -12,15 +12,18 @@ object. The Merlot object has a title::
     >>> app.title
     u'Merlot -- Project Management System'
 
-When the application is created, containers for projects and clients get also
-created::
+When the application is created, containers for projects, clients and users get
+also created::
 
     >>> 'projects' in app
     True
     >>> 'clients' in app
     True
+    >>> 'users' in app
+    True
     >>> project_container = app['projects']
     >>> client_container = app['clients']
+    >>> userfolder = app['users']
 
 Let's check that `projects_container` and `clients_container` are what we
 expect them to be::

@@ -31,6 +31,7 @@ from z3c.flashmessage.interfaces import IMessageReceiver
 from merlot.auth import UserAuthenticatorPlugin, setup_authentication
 from merlot.simple import ProjectContainer
 from merlot.client import ClientContainer
+from merlot.auth import UserFolder
 import merlot.interfaces as ifaces
 from merlot import MerlotMessageFactory as _
 
@@ -47,6 +48,8 @@ class Merlot(grok.Application, grok.Container):
         self['projects'] = projs_container
         orgs_container = ClientContainer(title=u'Clients')
         self['clients'] = orgs_container
+        user_folder = UserFolder(title=u'Users')
+        self['users'] = user_folder
 
     grok.local_utility(UserAuthenticatorPlugin,
                        provides=IAuthenticatorPlugin,
@@ -159,7 +162,7 @@ class NavigationBar(grok.Viewlet):
              'css':'clients',
              'id':'clients'},
             {'title': _('Users'),
-             'url':self.view.application_url() + '/manage-users',
+             'url':self.view.application_url() + '/users',
              'css':'users',
              'id':'manage-users'}]
         self.sections = sections
@@ -185,9 +188,16 @@ class PathBar(grok.Viewlet):
         path = []
         current = self.context
         while not ifaces.IMerlot.providedBy(current):
+            title = ''
+            if ifaces.IAccount.providedBy(current):
+                title = current.real_name
+            elif hasattr(current, 'title'):
+                title = current.title
+            else:
+                title = current.id
+
             path.insert(0,
-                {'title': current.title if hasattr(current, 'title') \
-                          else current.id,
+                {'title': title,
                  'url': self.view.url(current),
                 })
             current = current.__parent__
@@ -328,8 +338,10 @@ class DeleteConfirmationForm(grok.Form):
             item = 'log'
         elif id:
             item = '"%s"' % id
-        else:
+        elif hasattr(self.context, 'title'):
             item = '"%s"' % self.context.title
+        else:
+            item = '"%s"' % self.context.username
         self.label = qst % (item,)
 
     @grok.action(_(u'Delete'))
@@ -338,10 +350,7 @@ class DeleteConfirmationForm(grok.Form):
         context = data.get('context', None)
         id = data.get('id', None)
         redirect_to = ''
-        if context == 'user':
-            redirect_to = self.url(self.context) + \
-                '/@@delete-user?login=%s' % id
-        elif context == 'log':
+        if context == 'log':
             redirect_to = self.url(self.context) + \
                 '/@@delete-log/?id=%s' % id
         else:
@@ -421,11 +430,11 @@ class I18nJavascript(grok.View):
             'DATE_RANGE_I18N': _('Date Range')}
         message_variable = "merlot = {};merlot.i18n = {\n%s}\n"
         response = self.request.response
-        response.setHeader('Content-Type',
-                                'text/javascript; charset=UTF-8')
+        response.setHeader('Content-Type', 'text/javascript; charset=UTF-8')
         template = ''
         for key in messages:
-            msg = translate(messages[key], context = self.request).replace("'", "\\'")
+            msg = translate(messages[key],
+                            context=self.request).replace("'", "\\'")
             template = "%s%s: '%s',\n" % (template, key, msg)
 
         return message_variable % template[:-2]

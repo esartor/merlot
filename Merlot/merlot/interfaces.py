@@ -70,22 +70,23 @@ class ClientSource(RelationSourceFactory):
 
 
 # Auth interfaces
+class IUserFolder(Interface):
+    title = schema.TextLine(title=_(u'Title'), required=True)
+
+
 class IAccount(Interface):
-    name = schema.BytesLine(title=_(u'Username'), required=True)
+    username = schema.BytesLine(title=_(u'Username'), required=True)
     real_name = schema.TextLine(title=_(u'Real name'), required=True)
     password = schema.Password(title=_(u'Password'), required=True)
 
 
 class ILoginForm(Interface):
-    login = schema.BytesLine(title=_(u'Username'), required=False)
+    username = schema.BytesLine(title=_(u'Username'), required=False)
     camefrom = schema.BytesLine(title=u'', required=False)
     password = schema.Password(title=_(u'Password'), required=False)
 
 
-class IAddUserForm(Interface):
-    login = schema.BytesLine(title=_(u'Username'), required=True)
-    real_name = schema.TextLine(title=_(u'Real name'), required=True)
-    password = schema.Password(title=_(u'Password'), required=True)
+class IAddUserForm(IAccount):
     confirm_password = schema.Password(title=_(u'Confirm password'),
         required=True)
 
@@ -95,8 +96,8 @@ class IAddUserForm(Interface):
             raise Invalid(_('Passwords does not match'))
 
     @invariant
-    def valid_login(form):
-        if not re.compile('^[a-z0-9]+$').match(form.login):
+    def valid_username(form):
+        if not re.compile('^[a-z0-9]+$').match(form.username):
             raise Invalid(_('Invalid user name, only characters in [a-z0-9] '
                             'are allowed'))
 
@@ -108,9 +109,7 @@ class IAddUserForm(Interface):
 # form_fields['password'].field = False and then go back to the add
 # form, the field is not required.
 class IEditUserForm(IAddUserForm):
-    password = schema.Password(title=_(u'Password'), required=False)
-    confirm_password = schema.Password(title=_(u'Confirm password'),
-        required=False)
+    """Edit user form"""
 
 
 class IMetadata(Interface):

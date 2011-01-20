@@ -16,15 +16,15 @@ from zope.app.authentication.interfaces import ICredentialsPlugin
 from zope.app.authentication.interfaces import IAuthenticatorPlugin
 from zope.app.authentication.interfaces import IPrincipalInfo
 from zope.app.authentication.interfaces import IPasswordManager
-from zope.app.security.interfaces import IAuthentication, \
-    IUnauthenticatedPrincipal, ILogout
+from zope.app.security.interfaces import IAuthentication
+from zope.app.security.interfaces import IUnauthenticatedPrincipal
+from zope.app.security.interfaces import ILogout
 from zope.securitypolicy.interfaces import IPrincipalRoleManager
 
 from zope.component import getMultiAdapter
 
 from merlot.lib import master_template, default_form_template
-from merlot.interfaces import ILoginForm, IAddUserForm, IEditUserForm, IMain, \
-    IAccount
+import merlot.interfaces as ifaces
 from merlot import MerlotMessageFactory as _
 
 
@@ -38,8 +38,8 @@ class MySessionCredentialsPlugin(grok.GlobalUtility, SessionCredentialsPlugin):
     grok.name('credentials')
 
     loginpagename = 'login'
-    loginfield = 'login'
-    passwordfield = 'password'
+    loginfield = 'form.username'
+    passwordfield = 'form.password'
 
 
 class LoginForm(grok.Form):
@@ -49,8 +49,7 @@ class LoginForm(grok.Form):
     label = _(u'Login')
     template = default_form_template
 
-    prefix = ''
-    form_fields = grok.Fields(ILoginForm)
+    form_fields = grok.Fields(ifaces.ILoginForm)
 
     def setUpWidgets(self, ignore_request=False):
         super(LoginForm, self).setUpWidgets(ignore_request)
@@ -82,7 +81,7 @@ class LoginViewlet(grok.Viewlet):
     """The login viewlet, which renders the login form and is
     registered for the Login view.
     """
-    grok.viewletmanager(IMain)
+    grok.viewletmanager(ifaces.IMain)
     grok.context(Interface)
     grok.view(Login)
     grok.order(10)
@@ -126,9 +125,6 @@ class UserAuthenticatorPlugin(grok.LocalUtility):
     grok.implements(IAuthenticatorPlugin)
     grok.name('users')
 
-    def __init__(self):
-        self.user_folder = UserFolder()
-
     def authenticateCredentials(self, credentials):
         if not isinstance(credentials, dict):
             return None
@@ -140,7 +136,7 @@ class UserAuthenticatorPlugin(grok.LocalUtility):
             return None
         if not account.checkPassword(credentials['password']):
             return None
-        return PrincipalInfo(id=account.name,
+        return PrincipalInfo(id=account.username,
                              title=account.real_name,
                              description=account.real_name)
 
@@ -148,59 +144,59 @@ class UserAuthenticatorPlugin(grok.LocalUtility):
         account = self.getAccount(id)
         if account is None:
             return None
-        return PrincipalInfo(id=account.name,
+        return PrincipalInfo(id=account.username,
                              title=account.real_name,
                              description=account.real_name)
 
-    def getAccount(self, login):
-        return login in self.user_folder and self.user_folder[login] or None
+    def getAccount(self, username):
+        user_folder = grok.getSite()['users']
+        return username in user_folder and user_folder[username] or None
 
     def addUser(self, username, password, real_name):
-        if username not in self.user_folder:
+        user_folder = grok.getSite()['users']
+        if username not in user_folder:
             user = Account(username, password, real_name)
-            self.user_folder[username] = user
+            user_folder[username] = user
             role_manager = IPrincipalRoleManager(grok.getSite())
             role_manager.assignRoleToPrincipal('merlot.Manager', username)
 
-    def delUser(self, username):
-        if username in self.user_folder:
+    def removeUser(self, username):
+        user_folder = grok.getSite()['users']
+        if username in user_folder:
             role_manager = IPrincipalRoleManager(grok.getSite())
             role_manager.removeRoleFromPrincipal('merlot.Manager', username)
-            del self.user_folder[username]
-
-    def listUsers(self):
-        return self.user_folder.values()
+            del user_folder[username]
 
 
 class UserFolder(grok.Container):
-    pass
+    grok.implements(ifaces.IUserFolder)
+
+    def __init__(self, title=None):
+        super(UserFolder, self).__init__()
+        self.title = title
 
 
-class ManageUsers(grok.View):
-    """The manage users view"""
-    grok.context(Interface)
+class UserFolderIndex(grok.View):
+    """The users container view"""
+    grok.context(ifaces.IUserFolder)
+    grok.name('index')
     grok.require('merlot.Manage')
-    grok.name('manage-users')
     template = master_template
 
-    def update(self):
-        users = component.getUtility(IAuthenticatorPlugin, 'users')
-        self.users = users.listUsers()
 
-
-class UsersList(grok.Viewlet):
-    """A viewlet that displays all existing users"""
-    grok.viewletmanager(IMain)
-    grok.context(Interface)
-    grok.view(ManageUsers)
+class UserFolderIndexViewlet(grok.Viewlet):
+    grok.viewletmanager(ifaces.IMain)
+    grok.context(ifaces.IUserFolder)
+    grok.template('userfolder_index')
+    grok.view(UserFolderIndex)
     grok.order(10)
 
 
 class Account(grok.Model):
-    grok.implements(IAccount)
+    grok.implements(ifaces.IAccount)
 
-    def __init__(self, name, password, real_name):
-        self.name = name
+    def __init__(self, username, password, real_name):
+        self.username = username
         self.real_name = real_name
         self.setPassword(password)
 
@@ -213,26 +209,26 @@ class Account(grok.Model):
         return passwordmanager.checkPassword(self.password, password)
 
 
-class AddUserForm(grok.Form):
+class AddUserForm(grok.AddForm):
     """The add user form"""
-    grok.context(Interface)
+    grok.context(ifaces.IUserFolder)
     grok.name('add-user-form')
     label = _(u'Add user')
     template = default_form_template
 
-    form_fields = grok.Fields(IAddUserForm)
+    form_fields = grok.Fields(ifaces.IAddUserForm)
 
     @grok.action(_(u'Add user'))
     def handle_add(self, **data):
         users = component.getUtility(IAuthenticatorPlugin, 'users')
-        users.addUser(data['login'], data['password'], data['real_name'])
+        users.addUser(data['username'], data['password'], data['real_name'])
         self.flash(_(u'User added.'), type=u'message')
-        self.redirect(self.url(grok.getSite(), 'manage-users'))
+        self.redirect(self.url(self.context))
 
 
 class AddUser(grok.View):
     """The add user view"""
-    grok.context(Interface)
+    grok.context(ifaces.IUserFolder)
     grok.name('add-user')
     grok.require('merlot.Manage')
     template = master_template
@@ -242,8 +238,8 @@ class AddUserViewlet(grok.Viewlet):
     """The add user viewlet, which renders the add user form and is
     registered for the AddUser view.
     """
-    grok.viewletmanager(IMain)
-    grok.context(Interface)
+    grok.viewletmanager(ifaces.IMain)
+    grok.context(ifaces.IUserFolder)
     grok.view(AddUser)
     grok.order(10)
 
@@ -258,39 +254,33 @@ class AddUserViewlet(grok.Viewlet):
 
 class EditUserForm(grok.Form):
     """The edit user form"""
-    grok.context(Interface)
+    grok.context(ifaces.IAccount)
     grok.name('edit-user-form')
     label = _(u'Edit user')
     template = default_form_template
 
-    form_fields = grok.Fields(IEditUserForm)
+    form_fields = grok.Fields(ifaces.IEditUserForm)
 
     @grok.action(_(u'Save'))
     def edit(self, **data):
-        users = component.getUtility(IAuthenticatorPlugin, 'users')
-        uid = self.request.form.get('form.login')
-        user = users.getAccount(uid)
         password = self.request.form.get('form.password')
         if password:
-            user.setPassword(password)
-        user.real_name = self.request.form.get('form.real_name')
+            self.context.setPassword(password)
+        self.context.real_name = self.request.form.get('form.real_name')
         self.flash(_(u'Changes saved.'), type=u'message')
-        self.redirect(self.url(grok.getSite(), '@@manage-users'))
+        return self.redirect(self.url(self.context.__parent__))
 
     def setUpWidgets(self, ignore_request=False):
-        users = component.getUtility(IAuthenticatorPlugin, 'users')
-        user = users.principalInfo(self.request.get('login'))
         super(EditUserForm, self).setUpWidgets(ignore_request)
-        if user:
-            self.widgets['login'].setRenderedValue(user.id)
-            self.widgets['login'].extra = 'readonly="true"'
-            self.widgets['real_name'].setRenderedValue(user.title)
+        self.widgets['username'].setRenderedValue(self.context.username)
+        self.widgets['real_name'].setRenderedValue(self.context.real_name)
+        self.widgets['username'].extra = 'readonly="true"'
 
 
 class EditUser(grok.View):
     """The edit user view"""
-    grok.context(Interface)
-    grok.name('edit-user')
+    grok.context(ifaces.IAccount)
+    grok.name('edit')
     grok.require('merlot.Manage')
     template = master_template
 
@@ -299,8 +289,8 @@ class EditUserViewlet(grok.Viewlet):
     """The edit user viewlet, which renders the edit user form and is
     registered for the EditUser view.
     """
-    grok.viewletmanager(IMain)
-    grok.context(Interface)
+    grok.viewletmanager(ifaces.IMain)
+    grok.context(ifaces.IAccount)
     grok.view(EditUser)
     grok.order(10)
 
@@ -316,20 +306,17 @@ class EditUserViewlet(grok.Viewlet):
 class DeleteUser(grok.View):
     """Delete a user and return to the manage users screen"""
 
-    grok.context(Interface)
-    grok.name('delete-user')
+    grok.context(ifaces.IAccount)
+    grok.name('delete')
     grok.require('merlot.Manage')
 
     def render(self):
-        userid = self.request.get('login', None)
-        if userid:
-            users = component.getUtility(IAuthenticatorPlugin, 'users')
-            users.delUser(userid)
-            self.flash(_(u'User deleted.'), type=u'message')
-        else:
-            self.flash(_(u'User not found.'), type=u'error')
+        userfolder = self.context.__parent__
+        users = component.getUtility(IAuthenticatorPlugin, 'users')
+        users.removeUser(self.context.username)
 
-        self.redirect(self.url(grok.getSite(), '@@manage-users'))
+        self.flash(_(u'User deleted.'), type=u'message')
+        return self.redirect(self.url(userfolder))
 
 
 class ManagerPermission(grok.Permission):

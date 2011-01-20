@@ -41,9 +41,10 @@ class UsersVocabulary(grok.GlobalUtility):
     grok.name('merlot.UsersVocabulary')
 
     def __call__(self, context=None):
-        users_util = getUtility(IAuthenticatorPlugin, 'users')
-        users = users_util.listUsers()
-        users = [SimpleTerm(u.name, u.name, u.real_name) for u in users]
+        site = grok.getSite()
+        users = site['users'].values()
+        users = [SimpleTerm(u.username, u.username, u.real_name) for \
+                 u in users]
 
         all_users = ('all', 'all', 'All users')
         users.insert(0, SimpleTerm(*all_users))

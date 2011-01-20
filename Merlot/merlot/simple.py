@@ -306,10 +306,10 @@ class Task(grok.Container):
 
     def deleteFromStarredLists(self):
         """Remove the task from the starred tasks lists"""
-        users = getUtility(IAuthenticatorPlugin, 'users')
+        app = grok.getSite()
         intids = getUtility(IIntIds, name='intids')
 
-        for user in users.listUsers():
+        for user in app['users'].values():
             starred_tasks = ifaces.IStarredTasks(user)
             intid = intids.getId(self)
             starred_tasks.removeStarredTask(intid)

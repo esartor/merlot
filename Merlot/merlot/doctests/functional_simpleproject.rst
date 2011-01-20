@@ -20,7 +20,7 @@ Now we create a new user::
 
     >>> browser.getLink('Users').click()
     >>> browser.getLink('Add new User').click()
-    >>> browser.getControl(name="form.login").value = u'user'
+    >>> browser.getControl(name="form.username").value = u'user'
     >>> browser.getControl(name="form.real_name").value = u'Testing User'
     >>> browser.getControl(name="form.password").value = u'secret'
     >>> browser.getControl(name="form.confirm_password").value = u'secret'
@@ -35,8 +35,8 @@ just created::
 
     >>> browser = Browser()
     >>> browser.open('http://localhost/app')
-    >>> browser.getControl(name="login").value = u'user'
-    >>> browser.getControl(name="password").value = u'secret'
+    >>> browser.getControl(name="form.username").value = u'user'
+    >>> browser.getControl(name="form.password").value = u'secret'
     >>> browser.getControl("Login").click()
     >>> 'You are logged in.' in browser.contents
     True
@@ -194,8 +194,7 @@ current starred tasks for the authenticated user::
     >>> from zope.component import getUtility
     >>> from zope.app.authentication.interfaces import IAuthenticatorPlugin
     >>> from zope.intid.interfaces import IIntIds
-    >>> users = getUtility(IAuthenticatorPlugin, 'users', context=app)
-    >>> user = users.getAccount('user')
+    >>> user = app['users']['user']
     >>> starred_tasks = IStarredTasks(user)
     >>> starred_tasks.getStarredTasks()
     []
