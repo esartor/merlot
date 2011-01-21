@@ -587,6 +587,9 @@ td.actions {
     color:#333;
 }
 
+.form .widget .date-translated {
+    display:block;
+}
 
 /*DASHBOARD*/
 #dashboard .field-container,
@@ -596,11 +599,13 @@ td.actions {
     padding-bottom:4px;
 }
 #dashboard .field-container .error,
-.log-row .field-container .error{
+.log-row .field-container .error,
+.form .widget .date-translated.error{
     background:url("images/problem.png") no-repeat scroll 0 4px transparent;
 }
 #dashboard .field-container .accept,
-.log-row .field-container .accept{
+.log-row .field-container .accept,
+.form .widget .date-translated.accept{
     background:url("images/accept.png") no-repeat scroll 0 4px transparent;
 }
 .date-translated {

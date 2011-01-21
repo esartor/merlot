@@ -107,49 +107,4 @@ $(document).ready(function() {
             return false;
         });
     }
-    
-
-    function dateTranslator(date_input, date_translated) {
-        // code from http://www.datejs.com/ demos
-        var messages = "no match";
-        var input = date_input, date_string = date_translated, date = null;
-        var input_empty = merlot.i18n.ENTER_DATE_HERE_I18N, empty_string = merlot.i18n.TYPE_DATE_BELLOW_I18N;
-        input.val(input_empty);
-        date_string.text(empty_string);
-        input.keyup(
-            function (e) {
-                date_string.removeClass();
-                date_string.addClass('date-translated');
-                if (input.val().length > 0) {
-                    date = Date.parse(input.val());
-                    if (date !== null) {
-                        input.removeClass();
-                        date_string.addClass("accept").text(date.toString("dddd, MMM dd, yyyy"));
-                    } else {
-                        input.addClass("validate_error");
-                        date_string.addClass("error").text(messages+"...");
-                    }
-                } else {
-                    date_string.text(empty_string).addClass("empty");
-                }
-            }
-        );
-        input.focus(
-            function (e) {
-                if (input.val() === input_empty) {
-                    input.val("");
-                }
-            }
-        );
-        input.blur(
-            function (e) {
-                if (input.val() !== "") {
-                    input.attr('value', date.toString("yyyy-MM-dd"));
-                }
-                if (input.val() === "") {
-                    input.val(input_empty).removeClass();
-                }
-            }
-        );
-    }
 });

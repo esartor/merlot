@@ -4,7 +4,11 @@ $(document).ready(function() {
 
     // focus in login page
     $('#login').focus();
-    
+
+
+    function dateTranslatorSetup(input) {
+        input.before('<span class="date-translated">'+merlot.i18n.TYPE_DATE_BELLOW_I18N+'</span>');
+    };    
     
     $("#form\\.date").datepicker({"dateFormat": dateFormat});
 
@@ -34,6 +38,11 @@ $(document).ready(function() {
             $(this).copyEventsTo(calendar_launcher);
             $(this).unbind();
         });
+        preset_ranges_from_to.each(function(){  
+            dateTranslatorSetup($(this));
+            var date_translated = $(this).siblings('.date-translated');
+            dateTranslator($(this), date_translated);          
+        });            
     }
     if (only_ranged_star_end.length) {
         //we have to create the little calendar icon on the right
@@ -52,7 +61,12 @@ $(document).ready(function() {
             calendar_launcher = $(this).next('.calendar-icon');
             $(this).copyEventsTo(calendar_launcher);
             $(this).unbind();
-        });        
+        });  
+        only_ranged_star_end.each(function(){  
+            dateTranslatorSetup($(this));
+            var date_translated = $(this).siblings('.date-translated');
+            dateTranslator($(this), date_translated);          
+        });               
     }
 
 
@@ -220,4 +234,47 @@ function manageFlashMessages() {
         });
 
     });
+}
+function dateTranslator(date_input, date_translated) {
+    // code from http://www.datejs.com/ demos
+    var messages = "no match";
+    var input = date_input, date_string = date_translated, date = null;
+    var input_empty = (date_input.val() == '') ? merlot.i18n.ENTER_DATE_HERE_I18N : date_input.val(), empty_string = merlot.i18n.TYPE_DATE_BELLOW_I18N;
+    input.val(input_empty);
+    date_string.text(empty_string);
+    input.keyup(
+        function (e) {
+            date_string.removeClass();
+            date_string.addClass('date-translated');
+            if (input.val().length > 0) {
+                date = Date.parse(input.val());
+                if (date !== null) {
+                    input.removeClass();
+                    date_string.addClass("accept").text(date.toString("dddd, MMM dd, yyyy"));
+                } else {
+                    input.addClass("validate_error");
+                    date_string.addClass("error").text(messages+"...");
+                }
+            } else {
+                date_string.text(empty_string).addClass("empty");
+            }
+        }
+    );
+    input.focus(
+        function (e) {
+            if (input.val() === input_empty) {
+                input.val("");
+            }
+        }
+    );
+    input.blur(
+        function (e) {
+            if (input.val() !== "") {
+                input.attr('value', date.toString("yyyy-MM-dd"));
+            }
+            if (input.val() === "") {
+                input.val(input_empty).removeClass();
+            }
+        }
+    );    
 }
