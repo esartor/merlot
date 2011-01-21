@@ -427,7 +427,8 @@ class I18nJavascript(grok.View):
             'LAST_7_DAYS_I18N': _('Last 7 days'),
             'MONTH_TO_DATE_I18N': _('Month to date'),
             'PREVIOUS_MONTH_I18N': _('The previous Month'),
-            'DATE_RANGE_I18N': _('Date Range')}
+            'DATE_RANGE_I18N': _('Date Range'),
+            'SPECIFIC_DATE_I18N':_('Specific Date')}
         message_variable = "merlot = {};merlot.i18n = {\n%s}\n"
         response = self.request.response
         response.setHeader('Content-Type', 'text/javascript; charset=UTF-8')

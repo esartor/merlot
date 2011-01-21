@@ -9,30 +9,50 @@ $(document).ready(function() {
     $("#form\\.date").datepicker({"dateFormat": dateFormat});
 
     //PROJECT SELECTION
-    var forms_date_fields = $("#form\\.start_date, #form\\.end_date, #form\\.from_date, #form\\.to_date");
-    if (forms_date_fields[0] !== undefined){
+    var only_ranged_star_end = $("#form\\.start_date, #form\\.end_date");
+    var preset_ranges_from_to = $("#form\\.from_date, #form\\.to_date");
+    if (preset_ranges_from_to.length){
         //we have to create the little calendar icon on the right
-        forms_date_fields.each(function(){
+        preset_ranges_from_to.each(function(){
             icon = '<img class="calendar-icon ui-datepicker-trigger" src="/@@/merlot/images/calendar.gif"/>';
             $(this).after(icon);
         });
-        forms_date_fields.daterangepicker({
-        presetRanges: [
-            {text: merlot.i18n.TODAY_I18N, dateStart: 'today', dateEnd: 'today' },
-            {text: merlot.i18n.LAST_7_DAYS_I18N, dateStart: 'today-7days', dateEnd: 'today' },
-            {text: merlot.i18n.MONTH_TO_DATE_I18N, dateStart: function(){ return Date.parse('today').moveToFirstDayOfMonth(); }, dateEnd: 'today' },
-            {text: merlot.i18n.PREVIOUS_MONTH_I18N, dateStart: function(){ return Date.parse('1 month ago').moveToFirstDayOfMonth(); }, dateEnd:function(){ return Date.parse('1 month ago').moveToLastDayOfMonth(); } } 
-        ],
-        presets: {dateRange: merlot.i18n.DATE_RANGE_I18N}, 
-        dateFormat: dateFormat
+        preset_ranges_from_to.daterangepicker({
+            presetRanges: [
+                {text: merlot.i18n.TODAY_I18N, dateStart: 'today', dateEnd: 'today' },
+                {text: merlot.i18n.LAST_7_DAYS_I18N, dateStart: 'today-7days', dateEnd: 'today' },
+                {text: merlot.i18n.MONTH_TO_DATE_I18N, dateStart: function(){ return Date.parse('today').moveToFirstDayOfMonth(); }, dateEnd: 'today' },
+                {text: merlot.i18n.PREVIOUS_MONTH_I18N, dateStart: function(){ return Date.parse('1 month ago').moveToFirstDayOfMonth(); }, dateEnd:function(){ return Date.parse('1 month ago').moveToLastDayOfMonth(); } } 
+            ],
+            presets: {dateRange: merlot.i18n.DATE_RANGE_I18N}, 
+            dateFormat: dateFormat
         });
 
         //we copy the events from the daterangpicker to the calendar icon launcher
-        forms_date_fields.each(function(){
+        preset_ranges_from_to.each(function(){
             calendar_launcher = $(this).next('.calendar-icon');
             $(this).copyEventsTo(calendar_launcher);
             $(this).unbind();
         });
+    }
+    if (only_ranged_star_end.length) {
+        //we have to create the little calendar icon on the right
+        only_ranged_star_end.each(function(){
+            icon = '<img class="calendar-icon ui-datepicker-trigger" src="/@@/merlot/images/calendar.gif"/>';
+            $(this).after(icon);
+        });
+        only_ranged_star_end.daterangepicker({
+            presetRanges:[],
+            presets: {specificDate:merlot.i18n.SPECIFIC_DATE_I18N, dateRange: merlot.i18n.DATE_RANGE_I18N}, 
+            dateFormat: dateFormat
+        });
+
+        //we copy the events from the daterangpicker to the calendar icon launcher
+        only_ranged_star_end.each(function(){
+            calendar_launcher = $(this).next('.calendar-icon');
+            $(this).copyEventsTo(calendar_launcher);
+            $(this).unbind();
+        });        
     }
 
 
