@@ -149,7 +149,8 @@ class UserAuthenticatorPlugin(grok.LocalUtility):
                              description=account.real_name)
 
     def getAccount(self, username):
-        user_folder = grok.getSite()['users']
+        user_folder = grok.getSite()['users'] if 'users' \
+                      in grok.getSite() else ''
         return username in user_folder and user_folder[username] or None
 
     def addUser(self, username, password, real_name):

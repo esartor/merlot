@@ -6,6 +6,7 @@ managers, common viewlets, the path bar, the personal bar, among
 others.
 """
 
+import logging
 import grok
 from zope.interface import Interface
 from zope import schema
@@ -428,7 +429,7 @@ class I18nJavascript(grok.View):
             'MONTH_TO_DATE_I18N': _('Month to date'),
             'PREVIOUS_MONTH_I18N': _('The previous Month'),
             'DATE_RANGE_I18N': _('Date Range'),
-            'SPECIFIC_DATE_I18N':_('Specific Date')}
+            'SPECIFIC_DATE_I18N': _('Specific Date')}
         message_variable = "merlot = {};merlot.i18n = {\n%s}\n"
         response = self.request.response
         response.setHeader('Content-Type', 'text/javascript; charset=UTF-8')
@@ -439,3 +440,31 @@ class I18nJavascript(grok.View):
             template = "%s%s: '%s',\n" % (template, key, msg)
 
         return message_variable % template[:-2]
+
+
+class UsersMigration(grok.View):
+    grok.context(Interface)
+    grok.name('user-migration-posrev15')
+
+    def render(self):
+        site = grok.getSite()
+        if not 'users' in site.keys():
+            user_folder = UserFolder(title=u'Users')
+            logging.info('geting old users folder...')
+            old_user_folder = getUtility(IAuthenticatorPlugin, \
+                'users').user_folder
+            logging.info('Done, old users founded:'+ str([x for x in old_user_folder]))
+            for user_key in old_user_folder:
+                user_folder[user_key] = old_user_folder[user_key]
+            site['users'] = user_folder
+
+            logging.info('checking attributes...')
+            for account in user_folder:
+                user_folder[account].username = user_folder[account].name
+                del(user_folder[account].name)
+            del(old_user_folder)
+            logging.info('Success data migrated')                
+        else:
+            logging.info('old data already migrated?...')
+            logging.warning('Nothing done, exiting')
+            del(site['users'])
