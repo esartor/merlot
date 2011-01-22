@@ -1,8 +1,9 @@
+# Emanuel Sartor <emanuel@menttes.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Development/Unknown\n"
 "POT-Creation-Date: Sat Jan 22 01:36:47 2011\n"
-"PO-Revision-Date: 2011-01-22 01:10-0300\n"
+"PO-Revision-Date: 2011-01-22 02:08-0300\n"
 "Last-Translator: Emanuel Sartor <emanuel@menttes.com>\n"
 "Language-Team: Spanish\n"
 "Language: es\n"
@@ -11,6 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: zope/app/locales/extract.py\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 1.1\n"
 
 #: merlot/app.py:157 merlot/app.py:198
 #: merlot/client_templates/client_index.pt:33
@@ -50,7 +52,7 @@ msgstr "Cancelar"
 
 #: merlot/app.py:432
 msgid "delete"
-msgstr "Borrar"
+msgstr "borrar"
 
 #: merlot/app.py:433
 msgid "Success"
@@ -312,7 +314,7 @@ msgstr "Agregar nuevo cliente"
 
 #: merlot/client_templates/clientcontainer_index.pt:52
 msgid "There are currently no clients."
-msgstr "No hay clientes"
+msgstr "No hay clientes actualmente"
 
 #: merlot/interfaces.py:101
 msgid "ID"
@@ -535,12 +537,12 @@ msgstr ""
 
 #: merlot/reports_templates/reports_index.pt:8
 msgid "See below a list of the available reports."
-msgstr "Encuentre debajo la lista de reportes disponibles"
+msgstr "Encuentre debajo la lista de reportes disponibles."
 
 #: merlot/reports_templates/tasksreport_viewlet.pt:63
 #: merlot/reports_templates/tasksreport_viewlet.pt:71
 msgid "Total Hours:"
-msgstr "Horas totales"
+msgstr "Horas totales:"
 
 #: merlot/reports_templates/tasksreport_viewlet.pt:76
 msgid "There are no results for the submited criteria."
@@ -632,7 +634,7 @@ msgstr "${img} Borrar"
 
 #: merlot/simple_templates/project_index.pt:163
 msgid "There are currently no tasks."
-msgstr "Actualmente no hay tareas"
+msgstr "Actualmente no hay tareas."
 
 #: merlot/simple_templates/project_index.pt:22
 msgid "Project view: ${title}"
