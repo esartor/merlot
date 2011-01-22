@@ -12,10 +12,12 @@
                 <a i18n:translate="">Per status</a>
                 <form action="project_container_listing_template">
                     <select name="status">
-                        <option></option>                    
-                        <option value="In progress">In Progress</option>
-                        <option value="Completed">Completed</option>
-                        <option value="Blocked">Blocked</option>                        
+                        <option></option>
+                        <tal:statuses repeat="status viewlet/statuses">
+                          <option value=""
+                                  tal:attributes="value status/value"
+                                  tal:content="status/title"/>
+                        </tal:statuses>
                     </select>
                 </form>
             </li>

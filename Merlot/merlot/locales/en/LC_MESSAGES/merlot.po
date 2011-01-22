@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Development/Unknown\n"
-"POT-Creation-Date: Fri Jan 21 20:54:36 2011\n"
+"POT-Creation-Date: Sat Jan 22 01:09:06 2011\n"
 "PO-Revision-Date: 2011-01-01 16:45-0300\n"
 "Last-Translator: Emanuel Sartor <emanuel@menttes.com>\n"
 "Language-Team: English\n"
@@ -25,84 +25,84 @@ msgstr ""
 "Generated-By: zope/app/locales/extract.py\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: merlot/app.py:153 merlot/client_templates/client_index.pt:33
+#: merlot/app.py:157 merlot/client_templates/client_index.pt:33
 msgid "Projects"
 msgstr ""
 
-#: merlot/app.py:157 merlot/reports_templates/reports_index.pt:5
+#: merlot/app.py:161 merlot/reports_templates/reports_index.pt:5
 msgid "Reports"
 msgstr ""
 
-#: merlot/app.py:161 merlot/client_templates/clientcontainer_index.pt:5
+#: merlot/app.py:165 merlot/client_templates/clientcontainer_index.pt:5
 msgid "Clients"
 msgstr ""
 
-#: merlot/app.py:165 merlot/auth_templates/userfolder_index.pt:6
+#: merlot/app.py:169 merlot/auth_templates/userfolder_index.pt:6
 #: merlot/reports_templates/tasksreport_viewlet.pt:24
 msgid "Users"
 msgstr ""
 
-#: merlot/app.py:206
+#: merlot/app.py:210
 msgid "Home"
 msgstr ""
 
-#: merlot/app.py:303
+#: merlot/app.py:307
 msgid "Not authorized!"
 msgstr ""
 
-#: merlot/app.py:348
+#: merlot/app.py:352
 msgid "Delete"
 msgstr ""
 
-#: merlot/app.py:361
+#: merlot/app.py:365
 msgid "Cancel"
 msgstr ""
 
-#: merlot/app.py:422
+#: merlot/app.py:426
 msgid "delete"
 msgstr ""
 
-#: merlot/app.py:423
+#: merlot/app.py:427
 msgid "Success"
 msgstr ""
 
-#: merlot/app.py:424
+#: merlot/app.py:428
 msgid "More"
 msgstr ""
 
-#: merlot/app.py:425
+#: merlot/app.py:429
 msgid "Enter a date here"
 msgstr ""
 
-#: merlot/app.py:426
+#: merlot/app.py:430
 msgid "Type a date bellow"
 msgstr ""
 
-#: merlot/app.py:427
+#: merlot/app.py:431
 msgid "Today"
 msgstr ""
 
-#: merlot/app.py:428
+#: merlot/app.py:432
 msgid "Last 7 days"
 msgstr ""
 
-#: merlot/app.py:429
+#: merlot/app.py:433
 msgid "Month to date"
 msgstr ""
 
-#: merlot/app.py:430
+#: merlot/app.py:434
 msgid "The previous Month"
 msgstr ""
 
-#: merlot/app.py:431
+#: merlot/app.py:435
 msgid "Date Range"
 msgstr ""
 
-#: merlot/app.py:432
+#: merlot/app.py:436
 msgid "Specific Date"
 msgstr ""
 
-#: merlot/app.py:46
+#: merlot/app.py:47
 msgid "Merlot -- Project Management System"
 msgstr ""
 
@@ -110,7 +110,7 @@ msgstr ""
 #: merlot/auth_templates/userfolder_index.pt:10
 #: merlot/client_templates/clientcontainer_index.pt:9
 #: merlot/simple_templates/project_index.pt:84
-#: merlot/simple_templates/projectcontainer_index.pt:24
+#: merlot/simple_templates/projectcontainer_index.pt:26
 msgid "Search: ${search_field}"
 msgstr ""
 
@@ -130,7 +130,7 @@ msgstr ""
 
 #. Default: "Log Time"
 #: merlot/app_templates/dashboard.pt:64
-#: merlot/simple_templates/project_index.pt:135
+#: merlot/simple_templates/project_index.pt:133
 msgid "log-time-title"
 msgstr ""
 
@@ -141,9 +141,9 @@ msgstr ""
 #: merlot/client_templates/clientcontainer_index.pt:43
 #: merlot/client_templates/client_index.pt:11
 #: merlot/client_templates/client_index.pt:21
-#: merlot/simple_templates/project_index.pt:140
-#: merlot/simple_templates/project_index.pt:148
-#: merlot/simple_templates/project_index.pt:156
+#: merlot/simple_templates/project_index.pt:138
+#: merlot/simple_templates/project_index.pt:146
+#: merlot/simple_templates/project_index.pt:154
 #: merlot/simple_templates/project_container_listing_template.pt:39
 #: merlot/simple_templates/project_container_listing_template.pt:46
 #: merlot/simple_templates/task_index.pt:106
@@ -200,12 +200,12 @@ msgstr ""
 msgid "Edit user"
 msgstr ""
 
-#: merlot/auth.py:265 merlot/client.py:122 merlot/simple.py:192
+#: merlot/auth.py:265 merlot/client.py:122 merlot/simple.py:198
 msgid "Save"
 msgstr ""
 
-#: merlot/auth.py:271 merlot/client.py:126 merlot/simple.py:197
-#: merlot/simple.py:401 merlot/simple.py:629
+#: merlot/auth.py:271 merlot/client.py:126 merlot/simple.py:203
+#: merlot/simple.py:407 merlot/simple.py:635
 msgid "Changes saved."
 msgstr ""
 
@@ -231,7 +231,7 @@ msgstr ""
 
 #: merlot/auth_templates/userfolder_index.pt:29
 #: merlot/client_templates/clientcontainer_index.pt:28
-#: merlot/simple_templates/project_index.pt:110
+#: merlot/simple_templates/project_index.pt:109
 #: merlot/simple_templates/task_index.pt:89
 #: merlot/reports_templates/logsreport_viewlet.pt:19
 #: merlot/reports_templates/tasksreport_viewlet.pt:26
@@ -242,7 +242,7 @@ msgstr ""
 #: merlot/auth_templates/userfolder_index.pt:37
 #: merlot/client_templates/clientcontainer_index.pt:38
 #: merlot/client_templates/client_index.pt:6
-#: merlot/simple_templates/project_index.pt:142
+#: merlot/simple_templates/project_index.pt:140
 #: merlot/simple_templates/project_container_listing_template.pt:34
 #: merlot/simple_templates/task_index.pt:100
 #: merlot/reports_templates/logsreport_viewlet.pt:32
@@ -254,7 +254,7 @@ msgstr ""
 #: merlot/auth_templates/userfolder_index.pt:45
 #: merlot/client_templates/clientcontainer_index.pt:41
 #: merlot/client_templates/client_index.pt:16
-#: merlot/simple_templates/project_index.pt:150
+#: merlot/simple_templates/project_index.pt:148
 #: merlot/simple_templates/project_container_listing_template.pt:41
 #: merlot/simple_templates/task_index.pt:108
 #: merlot/reports_templates/logsreport_viewlet.pt:40
@@ -547,67 +547,67 @@ msgstr ""
 msgid "There are no results for the submited criteria."
 msgstr ""
 
-#: merlot/simple.py:121
+#: merlot/simple.py:127
 msgid "Create a new project"
 msgstr ""
 
-#: merlot/simple.py:124
+#: merlot/simple.py:130
 msgid "Add project"
 msgstr ""
 
-#: merlot/simple.py:143
+#: merlot/simple.py:149
 msgid "Project added."
 msgstr ""
 
-#: merlot/simple.py:184
+#: merlot/simple.py:190
 msgid "Edit the project"
 msgstr ""
 
-#: merlot/simple.py:278
+#: merlot/simple.py:284
 msgid "Project deleted."
 msgstr ""
 
-#: merlot/simple.py:324
+#: merlot/simple.py:330
 msgid "Create a new task"
 msgstr ""
 
-#: merlot/simple.py:327
+#: merlot/simple.py:333
 msgid "Add task"
 msgstr ""
 
-#: merlot/simple.py:347
+#: merlot/simple.py:353
 msgid "Task added."
 msgstr ""
 
-#: merlot/simple.py:388
+#: merlot/simple.py:394
 msgid "Edit the task"
 msgstr ""
 
-#: merlot/simple.py:483
+#: merlot/simple.py:489
 msgid "Task deleted."
 msgstr ""
 
-#: merlot/simple.py:518
+#: merlot/simple.py:524
 msgid "Add log"
 msgstr ""
 
-#: merlot/simple.py:537
+#: merlot/simple.py:543
 msgid "Log added."
 msgstr ""
 
-#: merlot/simple.py:560
+#: merlot/simple.py:566
 msgid "Log"
 msgstr ""
 
-#: merlot/simple.py:667
+#: merlot/simple.py:673
 msgid "Log deleted."
 msgstr ""
 
-#: merlot/simple.py:774
+#: merlot/simple.py:780
 msgid "You've removed the star from the task"
 msgstr ""
 
-#: merlot/simple.py:777
+#: merlot/simple.py:783
 msgid "You've marked the task with a star"
 msgstr ""
 
@@ -626,16 +626,12 @@ msgstr ""
 msgid "Hours"
 msgstr ""
 
-#: merlot/simple_templates/project_index.pt:109
-msgid "My hours"
-msgstr ""
-
 #: merlot/simple_templates/project_index.pt:15
 #: merlot/simple_templates/task_index.pt:15
 msgid "${img} Delete"
 msgstr ""
 
-#: merlot/simple_templates/project_index.pt:165
+#: merlot/simple_templates/project_index.pt:163
 msgid "There are currently no tasks."
 msgstr ""
 
@@ -685,7 +681,7 @@ msgstr ""
 msgid "Per status"
 msgstr ""
 
-#: merlot/simple_templates/projectcontainer_index.pt:28
+#: merlot/simple_templates/projectcontainer_index.pt:30
 msgid "Add new Project"
 msgstr ""
 
@@ -713,6 +709,14 @@ msgstr ""
 #: merlot/reports_templates/logsreport_viewlet.pt:8
 #: merlot/reports_templates/tasksreport_viewlet.pt:8
 msgid "Logs"
+msgstr ""
+
+#: merlot/vocabularies.py:43
+msgid "All projects"
+msgstr ""
+
+#: merlot/vocabularies.py:61
+msgid "All users"
 msgstr ""
 
 #: merlot/vocabularies.py:71
