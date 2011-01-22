@@ -18,7 +18,7 @@
       </a>
     </div>
   </div>
-    <tal:orgs condition="context/items">
+    <tal:clients condition="context/items">
       <div class="results row">
       <table id="listing-table">
         <thead>
@@ -29,16 +29,16 @@
           </tr>
         </thead>
         <tbody>
-          <tal:block repeat="org context">
+          <tal:block repeat="client context/values">
             <tr>
-              <td><a class="linkeable" href="" tal:content="python:context[org].title"
-                             tal:attributes="href org"/></td>
-              <td tal:content="python:context[org].type" />
+              <td><a class="linkeable" href="" tal:content="client/title"
+                     tal:attributes="href client/id"/></td>
+              <td tal:content="client/type" />
               <td class="actions">
-                <a class="action edit" title="Edit" ref="" tal:attributes="href string:${org}/edit" 
+                <a class="action edit" title="Edit" ref="" tal:attributes="href string:${client/id}/edit" 
                     i18n:translate="" i18n:attributes="title edit-action-title">
                     <img i18n:name="img" class="icon" alt="edit" tal:attributes="src static/images/edit.png"/></a>
-                <a class="action delete" title="Delete" href="" tal:attributes="href string:${org}/confirm-delete" i18n:translate=""
+                <a class="action delete" title="Delete" href="" tal:attributes="href string:${client/id}/confirm-delete" i18n:translate=""
                     i18n:attributes="title delete-action-title">
                    <img i18n:name="img" class="icon" alt="delete" tal:attributes="src static/images/delete.png"/>                
                 </a>
@@ -48,7 +48,7 @@
         </tbody>
       </table>
       </div>
-    </tal:orgs>
+    </tal:clients>
     <div tal:condition="not: context/items" i18n:translate="" class="empty-listing">
         There are currently no clients.
     </div>

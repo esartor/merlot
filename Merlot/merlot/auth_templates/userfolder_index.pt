@@ -30,14 +30,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr tal:repeat="user context">
-        <td tal:content="python:context[user].username">User ID</td>
-        <td tal:content="python:context[user].real_name">User real name</td>
+      <tr tal:repeat="user context/values">
+        <td tal:content="user/username">User ID</td>
+        <td tal:content="user/real_name">User real name</td>
         <td class="actions">
           <a href=""
              class="action edit"
              title="Edit"
-             tal:attributes="href string:${user}/edit"
+             tal:attributes="href string:${user/username}/edit"
              i18n:translate=""
              i18n:attributes="title edit-action-title">
              <img i18n:name="img" class="icon" alt="edit" tal:attributes="src static/images/edit.png"/>           
@@ -45,7 +45,7 @@
           <a href=""
              class="action delete"
              title="Delete"
-             tal:attributes="href string:${user}/confirm-delete"
+             tal:attributes="href string:${user/username}/confirm-delete"
              i18n:translate=""
              i18n:attributes="title delete-action-title">
              <img i18n:name="img" class="icon" alt="delete" tal:attributes="src static/images/delete.png"/>
