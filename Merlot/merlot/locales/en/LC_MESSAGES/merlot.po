@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Development/Unknown\n"
-"POT-Creation-Date: Sat Jan 22 01:09:06 2011\n"
+"POT-Creation-Date: Sat Jan 22 01:36:47 2011\n"
 "PO-Revision-Date: 2011-01-01 16:45-0300\n"
 "Last-Translator: Emanuel Sartor <emanuel@menttes.com>\n"
 "Language-Team: English\n"
@@ -25,7 +25,8 @@ msgstr ""
 "Generated-By: zope/app/locales/extract.py\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: merlot/app.py:157 merlot/client_templates/client_index.pt:33
+#: merlot/app.py:157 merlot/app.py:198
+#: merlot/client_templates/client_index.pt:33
 msgid "Projects"
 msgstr ""
 
@@ -33,72 +34,74 @@ msgstr ""
 msgid "Reports"
 msgstr ""
 
-#: merlot/app.py:165 merlot/client_templates/clientcontainer_index.pt:5
+#: merlot/app.py:165 merlot/app.py:202
+#: merlot/client_templates/clientcontainer_index.pt:5
 msgid "Clients"
 msgstr ""
 
-#: merlot/app.py:169 merlot/auth_templates/userfolder_index.pt:6
+#: merlot/app.py:169 merlot/app.py:200
+#: merlot/auth_templates/userfolder_index.pt:6
 #: merlot/reports_templates/tasksreport_viewlet.pt:24
 msgid "Users"
 msgstr ""
 
-#: merlot/app.py:210
+#: merlot/app.py:216
 msgid "Home"
 msgstr ""
 
-#: merlot/app.py:307
+#: merlot/app.py:313
 msgid "Not authorized!"
 msgstr ""
 
-#: merlot/app.py:352
+#: merlot/app.py:358
 msgid "Delete"
 msgstr ""
 
-#: merlot/app.py:365
+#: merlot/app.py:371
 msgid "Cancel"
 msgstr ""
 
-#: merlot/app.py:426
+#: merlot/app.py:432
 msgid "delete"
 msgstr ""
 
-#: merlot/app.py:427
+#: merlot/app.py:433
 msgid "Success"
 msgstr ""
 
-#: merlot/app.py:428
+#: merlot/app.py:434
 msgid "More"
 msgstr ""
 
-#: merlot/app.py:429
+#: merlot/app.py:435
 msgid "Enter a date here"
 msgstr ""
 
-#: merlot/app.py:430
+#: merlot/app.py:436
 msgid "Type a date bellow"
 msgstr ""
 
-#: merlot/app.py:431
+#: merlot/app.py:437
 msgid "Today"
 msgstr ""
 
-#: merlot/app.py:432
+#: merlot/app.py:438
 msgid "Last 7 days"
 msgstr ""
 
-#: merlot/app.py:433
+#: merlot/app.py:439
 msgid "Month to date"
 msgstr ""
 
-#: merlot/app.py:434
+#: merlot/app.py:440
 msgid "The previous Month"
 msgstr ""
 
-#: merlot/app.py:435
+#: merlot/app.py:441
 msgid "Date Range"
 msgstr ""
 
-#: merlot/app.py:436
+#: merlot/app.py:442
 msgid "Specific Date"
 msgstr ""
 

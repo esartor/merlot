@@ -194,7 +194,13 @@ class PathBar(grok.Viewlet):
         current = self.context
         while not ifaces.IMerlot.providedBy(current):
             title = ''
-            if ifaces.IAccount.providedBy(current):
+            if ifaces.IProjectContainer.providedBy(current):
+                title = _(u'Projects')
+            elif ifaces.IUserFolder.providedBy(current):
+                title = _(u'Users')
+            elif ifaces.IClientContainer.providedBy(current):
+                title = _(u'Clients')
+            elif ifaces.IAccount.providedBy(current):
                 title = current.real_name
             elif hasattr(current, 'title'):
                 title = current.title
