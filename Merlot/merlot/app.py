@@ -452,30 +452,32 @@ class I18nJavascript(grok.View):
         return message_variable % template[:-2]
 
 
-class UsersMigration(grok.View):
+class DataMigration(grok.View):
+    """Migrate Data.fs' that existed previous to moving the source to
+    the current repo.
+    """
     grok.context(Interface)
-    grok.name('user-migration-posrev15')
+    grok.name('data-migration-pre-hg')
 
     def render(self):
         site = grok.getSite()
         if not 'users' in site.keys():
             user_folder = UserFolder(title=u'Users')
-            logging.info('geting old users folder...')
+            logging.info('Getting old users folder...')
             old_user_folder = getUtility(IAuthenticatorPlugin, \
                 'users').user_folder
-            logging.info('Done, old users founded:' + \
+            logging.info('Done, old users found:' + \
                 str([x for x in old_user_folder]))
             for user_key in old_user_folder:
                 user_folder[user_key] = old_user_folder[user_key]
             site['users'] = user_folder
 
-            logging.info('checking attributes...')
+            logging.info('Checking attributes...')
             for account in user_folder:
-                user_folder[account].username = user_folder[account].name
-                del(user_folder[account].name)
-            del(old_user_folder)
-            logging.info('Success data migrated')
+                user_folder[account].id = user_folder[account].name
+                del user_folder[account].name
+            del old_user_folder
+            logging.info('Data migrated successfully.')
         else:
-            logging.info('old data already migrated?...')
-            logging.warning('Nothing done, exiting')
-            del(site['users'])
+            logging.info('Old data already migrated?')
+            logging.warning('Nothing done, exiting.')
