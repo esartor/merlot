@@ -457,7 +457,8 @@ class UsersMigration(grok.View):
             logging.info('geting old users folder...')
             old_user_folder = getUtility(IAuthenticatorPlugin, \
                 'users').user_folder
-            logging.info('Done, old users founded:'+ str([x for x in old_user_folder]))
+            logging.info('Done, old users founded:' + \
+                str([x for x in old_user_folder]))
             for user_key in old_user_folder:
                 user_folder[user_key] = old_user_folder[user_key]
             site['users'] = user_folder
@@ -467,7 +468,7 @@ class UsersMigration(grok.View):
                 user_folder[account].username = user_folder[account].name
                 del(user_folder[account].name)
             del(old_user_folder)
-            logging.info('Success data migrated')                
+            logging.info('Success data migrated')
         else:
             logging.info('old data already migrated?...')
             logging.warning('Nothing done, exiting')
