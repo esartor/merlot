@@ -8,7 +8,6 @@ import re
 from zope import schema
 from zope.interface import Interface, invariant, Invalid, Attribute
 
-from zc.sourcefactory.basic import BasicSourceFactory
 from z3c.relationfield import RelationChoice
 from z3c.relationfieldui import RelationSourceFactory
 
@@ -44,20 +43,6 @@ class ColorGenerator():
         hexcolor = u'#%02x%02x%02x' % rgb_tuple
         # that's it! '%02x' means zero-padded, 2-digit hex values
         return hexcolor
-
-
-class ProjectStatusSource(BasicSourceFactory):
-    """The statuses a project or task can be in"""
-
-    def getValues(self):
-        return (u'In progress', u'Blocked', u'Completed')
-
-
-class ClientTypeSource(BasicSourceFactory):
-    """The different client types"""
-
-    def getValues(self):
-        return (u'Company', u'Government', u'NGO', u'Internal', u'Individual')
 
 
 class ClientSource(RelationSourceFactory):
@@ -131,8 +116,8 @@ class IProject(Interface):
         title=_(u'Status'),
         required=False,
         description=_(u'The status the project is in'),
-        source=ProjectStatusSource(),
-        default=u'In progress',
+        vocabulary='merlot.ProjectStatusVocabulary',
+        default=u'in progress',
     )
     # chronic = schema.Bool(title=u'Chronic', required=True)
     start_date = schema.Date(
@@ -159,8 +144,8 @@ class ITask(Interface):
         title=_(u'Status'),
         required=False,
         description=_(u'The status the task is in'),
-        source=ProjectStatusSource(),
-        default=u'In progress',
+        vocabulary='merlot.ProjectStatusVocabulary',
+        default=u'in progress',
     )
     start_date = schema.Date(
         title=_(u'Start date'),
@@ -169,6 +154,12 @@ class ITask(Interface):
     end_date = schema.Date(title=_(u'End date'), required=False)
     estimate = schema.Decimal(title=_(u'Hours estimate'), required=False)
     remaining = schema.Decimal(title=_(u'Remaining hours'), required=False)
+    priority = schema.Choice(
+        title=_(u'Priority'),
+        required=False,
+        vocabulary='merlot.TaskPriorityVocabulary',
+        default=u'normal',
+    )
 
     def deleteFromStarredLists():
         """Remove the task from the starred tasks lists"""
@@ -230,8 +221,8 @@ class IClient(Interface):
         title=_(u'Type'),
         required=False,
         description=_(u'The client type'),
-        source=ClientTypeSource(),
-        default=u'Company',
+        vocabulary='merlot.ClientTypeVocabulary',
+        default=u'company',
     )
 
 
@@ -261,7 +252,7 @@ class ILogsReport(Interface):
     project_or_client = schema.Choice(
         title=_(u'Project'),
         required=True,
-        vocabulary='merlot.ProjectsVocabulary',
+        vocabulary='merlot.ProjectVocabulary',
         default=u'All projects',
     )
     from_date = schema.Date(
@@ -275,7 +266,7 @@ class ILogsReport(Interface):
     user = schema.Choice(
         title=_(u'User'),
         required=True,
-        vocabulary='merlot.UsersVocabulary',
+        vocabulary='merlot.UserVocabulary',
         default='All users',
     )
 
@@ -284,7 +275,7 @@ class ITasksReport(Interface):
     projects = schema.Choice(
         title=_(u'Project'),
         required=True,
-        vocabulary='merlot.ProjectsVocabulary',
+        vocabulary='merlot.ProjectVocabulary',
         default=u'All projects',
     )
     from_date = schema.Date(
@@ -298,7 +289,7 @@ class ITasksReport(Interface):
     user = schema.Choice(
         title=_(u'User'),
         required=True,
-        vocabulary='merlot.UsersVocabulary',
+        vocabulary='merlot.UserVocabulary',
         default='All users',
     )
 

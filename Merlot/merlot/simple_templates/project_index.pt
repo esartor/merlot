@@ -110,29 +110,29 @@
             </tr>
           </thead>
           <tbody>
-            <tal:block repeat="task context">
+            <tal:block repeat="task context/values">
               <tr>
                 <td class="starred">
                   <a href="" 
-                     tal:attributes="href string:${task}/toggle-starred?camefrom=${view/url};
-                                     class python:'starred-selected' if context[task] in viewlet.starred_tasks else 'starred-not-selected'"></a>
+                     tal:attributes="href string:${task/id}/toggle-starred?camefrom=${view/url};
+                                     class python:'starred-selected' if task.id in viewlet.starred_tasks else 'starred-not-selected'"></a>
                 </td>
-                <td class="status" tal:define="status python:context[task].status">
+                <td class="status" tal:define="status task/status">
                     <span tal:attributes="class python:status.replace(' ', '').lower() if status else 'none'" 
                           tal:content="python:status">In progress</span>
                 </td>
-                <td><a tal:content="python:context[task].title"
-                       tal:attributes="href task"/>
+                <td><a tal:content="task/title"
+                       tal:attributes="href task/id"/>
                 </td>
-                <td class="date start-date" tal:content="python:context[task].start_date" />
-                <td class="date end-date" tal:content="python:context[task].end_date" />
-                <td class="estimate" tal:condition="python:context[task].estimate" tal:content="python: '%.2f' % context[task].estimate" />
-                <td class="estimate" tal:condition="python: not context[task].estimate"></td>
-                <td class="worked-hours" tal:content="python: '%.2f' % viewlet.tasks_stats[task].getWorkedHours()"/>
+                <td class="date start-date" tal:content="task/start_date" />
+                <td class="date end-date" tal:content="task/end_date" />
+                <td class="estimate" tal:condition="task/estimate" tal:content="python: '%.2f' % task.estimate" />
+                <td class="estimate" tal:condition="python: not task.estimate"></td>
+                <td class="worked-hours" tal:content="python: '%.2f' % viewlet.tasks_stats[task.id].getWorkedHours()"/>
                 <td class="actions">
                     <a class="log-link linkeable action edit"
                        title="Log Time"
-                       tal:attributes="href task"
+                       tal:attributes="href task/id"
                        i18n:translate=""
                        i18n:attributes="title log-time-title">
                        <img i18n:name="img" alt="log time" tal:attributes="src static/images/log-time.png"/>
@@ -140,7 +140,7 @@
                     <a href=""
                        title="Edit"
                        class="action edit"
-                       tal:attributes="href string:${task}/edit"
+                       tal:attributes="href string:${task/id}/edit"
                        i18n:translate=""
                        i18n:attributes="title edit-action-title">
                     <img i18n:name="img" alt="edit" tal:attributes="src static/images/edit.png"/>                      
@@ -148,7 +148,7 @@
                     <a href=""
                        title="Delete"
                        class="action delete"
-                       tal:attributes="href string:${task}/confirm-delete"
+                       tal:attributes="href string:${task/id}/confirm-delete"
                        i18n:translate=""
                        i18n:attributes="title delete-action-title">
                     <img i18n:name="img" alt="delete" tal:attributes="src static/images/delete.png"/>                     
