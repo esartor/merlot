@@ -40,7 +40,7 @@ class ProjectVocabulary(grok.GlobalUtility):
 
         projects = [SimpleTerm(path(p), path(p), title(p)) for p in projects]
 
-        all_projects = ('all', 'all', 'All projects')
+        all_projects = (u'all', u'all', _(u'All projects'))
         projects.insert(0, SimpleTerm(*all_projects))
 
         return SimpleVocabulary(projects)
@@ -58,7 +58,7 @@ class UserVocabulary(grok.GlobalUtility):
         users = [SimpleTerm(u.username, u.username, u.real_name) for \
                  u in users]
 
-        all_users = ('all', 'all', 'All users')
+        all_users = (u'all', u'all', _(u'All users'))
         users.insert(0, SimpleTerm(*all_users))
 
         return SimpleVocabulary(users)
@@ -68,27 +68,27 @@ class TaskPriorityVocabulary(VocabularyFactory):
     """A vocabulary for task priorities"""
     grok.name('merlot.TaskPriorityVocabulary')
 
-    terms = [(u'critical', u'critical', _(u'Critical')),
-             (u'high', u'high', _(u'High')),
-             (u'normal', u'normal', _(u'Normal')),
-             (u'low', u'low', _(u'Low'))]
+    terms = [(u'Critical', u'Critical', _(u'Critical')),
+             (u'High', u'High', _(u'High')),
+             (u'Normal', u'Normal', _(u'Normal')),
+             (u'Low', u'Low', _(u'Low'))]
 
 
 class ProjectStatusVocabulary(VocabularyFactory):
     """The statuses a project or task can be in"""
     grok.name('merlot.ProjectStatusVocabulary')
 
-    terms = [(u'in progress', u'in progress', _(u'In progress')),
-             (u'blocked', u'blocked', _(u'Blocked')),
-             (u'completed', u'completed', _(u'Completed'))]
+    terms = [(u'In progress', u'In progress', _(u'In progress')),
+             (u'Blocked', u'Blocked', _(u'Blocked')),
+             (u'Completed', u'Completed', _(u'Completed'))]
 
 
 class ClientTypeVocabulary(VocabularyFactory):
     """The different client types"""
     grok.name('merlot.ClientTypeVocabulary')
 
-    terms = [(u'company', u'company', _(u'Company')),
-             (u'government', u'government', _(u'Government')),
-             (u'ngo', u'ngo', _(u'NGO')),
-             (u'internal', u'internal', _(u'Internal')),
-             (u'individual', u'individual', _(u'Individual'))]
+    terms = [(u'Company', u'Company', _(u'Company')),
+             (u'Government', u'Government', _(u'Government')),
+             (u'NGO', u'NGO', _(u'NGO')),
+             (u'Internal', u'Internal', _(u'Internal')),
+             (u'Individual', u'Individual', _(u'Individual'))]

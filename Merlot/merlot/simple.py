@@ -11,6 +11,7 @@ import grok.index
 
 from zope.publisher.interfaces import IRequest
 from zope.interface import Interface
+from zope.schema.interfaces import IVocabularyFactory
 from zope.component import getMultiAdapter, getUtility
 from zope.intid.interfaces import IIntIds
 from zope.catalog.interfaces import ICatalog
@@ -68,6 +69,11 @@ class ProjectContainerIndexViewlet(grok.Viewlet):
     grok.template('projectcontainer_index')
     grok.view(ProjectContainerIndex)
     grok.order(10)
+
+    def update(self):
+        statuses = getUtility(IVocabularyFactory,
+                              name='merlot.ProjectStatusVocabulary')
+        self.statuses = statuses().by_token.values()
 
 
 class Project(grok.Container):
