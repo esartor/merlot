@@ -297,7 +297,7 @@ class Index(grok.View):
         project = intids.getObject(task.project())
         self.project_id = project.id
         self.project_title = project.title
-        return project        
+        return project
 
 
 class Unauthorized(grok.View):
@@ -352,7 +352,7 @@ class DeleteConfirmationForm(grok.Form):
         elif hasattr(self.context, 'title'):
             item = '"%s"' % self.context.title
         else:
-            item = '"%s"' % self.context.username
+            item = '"%s"' % self.context.id
         self.label = qst % (item,)
 
     @grok.action(_(u'Delete'))

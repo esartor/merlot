@@ -20,7 +20,7 @@ Now we create a new user::
 
     >>> browser.getLink('Users').click()
     >>> browser.getLink('Add new User').click()
-    >>> browser.getControl(name="form.username").value = u'user'
+    >>> browser.getControl(name="form.id").value = u'user'
     >>> browser.getControl(name="form.real_name").value = u'Testing User'
     >>> browser.getControl(name="form.password").value = u'secret'
     >>> browser.getControl(name="form.confirm_password").value = u'secret'

@@ -55,8 +55,7 @@ class UserVocabulary(grok.GlobalUtility):
     def __call__(self, context=None):
         site = grok.getSite()
         users = site['users'].values()
-        users = [SimpleTerm(u.username, u.username, u.real_name) for \
-                 u in users]
+        users = [SimpleTerm(u.id, u.id, u.real_name) for u in users]
 
         all_users = (u'all', u'all', _(u'All users'))
         users.insert(0, SimpleTerm(*all_users))

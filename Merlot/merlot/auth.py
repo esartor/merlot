@@ -136,7 +136,7 @@ class UserAuthenticatorPlugin(grok.LocalUtility):
             return None
         if not account.checkPassword(credentials['password']):
             return None
-        return PrincipalInfo(id=account.username,
+        return PrincipalInfo(id=account.id,
                              title=account.real_name,
                              description=account.real_name)
 
@@ -144,7 +144,7 @@ class UserAuthenticatorPlugin(grok.LocalUtility):
         account = self.getAccount(id)
         if account is None:
             return None
-        return PrincipalInfo(id=account.username,
+        return PrincipalInfo(id=account.id,
                              title=account.real_name,
                              description=account.real_name)
 
@@ -197,7 +197,7 @@ class Account(grok.Model):
     grok.implements(ifaces.IAccount)
 
     def __init__(self, username, password, real_name):
-        self.username = username
+        self.id = username
         self.real_name = real_name
         self.setPassword(password)
 
@@ -222,7 +222,7 @@ class AddUserForm(grok.AddForm):
     @grok.action(_(u'Add user'))
     def handle_add(self, **data):
         users = component.getUtility(IAuthenticatorPlugin, 'users')
-        users.addUser(data['username'], data['password'], data['real_name'])
+        users.addUser(data['id'], data['password'], data['real_name'])
         self.flash(_(u'User added.'), type=u'message')
         self.redirect(self.url(self.context))
 
@@ -273,9 +273,10 @@ class EditUserForm(grok.Form):
 
     def setUpWidgets(self, ignore_request=False):
         super(EditUserForm, self).setUpWidgets(ignore_request)
-        self.widgets['username'].setRenderedValue(self.context.username)
+        self.widgets['id'].setRenderedValue(self.context.id)
         self.widgets['real_name'].setRenderedValue(self.context.real_name)
-        self.widgets['username'].extra = 'readonly="true"'
+        self.widgets['id'].extra = 'readonly="true"'
+        self.widgets['password'].setRenderedValue('')
 
 
 class EditUser(grok.View):
@@ -314,7 +315,7 @@ class DeleteUser(grok.View):
     def render(self):
         userfolder = self.context.__parent__
         users = component.getUtility(IAuthenticatorPlugin, 'users')
-        users.removeUser(self.context.username)
+        users.removeUser(self.context.id)
 
         self.flash(_(u'User deleted.'), type=u'message')
         return self.redirect(self.url(userfolder))
