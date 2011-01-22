@@ -1,0 +1,16 @@
+Merlot/develop-eggs/
+Merlot/include/
+Merlot/var/
+Merlot/parts/
+Merlot/.installed.cfg
+Merlot/lib/
+Merlot/bin/
+Merlot/docs/
+Merlot/coverage/
+Merlot/extends-cache/*
+Merlot/Merlot.egg-info/
+Merlot/docs-source/developer/_doctests/
+
+syntax: glob
+*.pyc
+*.mo
