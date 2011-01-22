@@ -67,6 +67,12 @@ img {
     border-bottom:1px solid #CCC;
 }
 
+.today-date {
+    display:none;
+}
+.hours-graph canvas{
+    height:15px;
+}
 /*  HEADER  */
 #header {
     height:auto;

@@ -3,7 +3,7 @@ var dateFormat = "yy-mm-dd";
 $(document).ready(function() {
 
     // focus in login page
-    $('#login').focus();
+    $('#form\\.username').focus();
 
 
     function dateTranslatorSetup(input) {
@@ -143,7 +143,10 @@ $(document).ready(function() {
         $(this).removeAttr('title');
         $(this).attr('my-attr', title);
     });
-    $('.actions .action').tipsy({gravity: $.fn.tipsy.autoNS, title: 'my-attr'});            
+    $('.actions .action').tipsy({gravity: $.fn.tipsy.autoNS, title: 'my-attr'});
+    
+    //graph for listing tasks
+    listingGraphs();
 
 });
 
@@ -214,7 +217,7 @@ function calculateRemaingHours(work_hours, remaing_hours) {
 function manageFlashMessages() {
     $('#flash-messages > ul').each(function() {
         var count = 0;
-        var messages_container = $(this)
+        var messages_container = $(this);
 
         messages_container.find('li').each(function() {
             var close_message = $("<span>&nbsp;</span>")
@@ -239,7 +242,7 @@ function dateTranslator(date_input, date_translated) {
     // code from http://www.datejs.com/ demos
     var messages = "no match";
     var input = date_input, date_string = date_translated, date = null;
-    var input_empty = (date_input.val() == '') ? merlot.i18n.ENTER_DATE_HERE_I18N : date_input.val(), empty_string = merlot.i18n.TYPE_DATE_BELLOW_I18N;
+    var input_empty = (date_input.val() === '') ? merlot.i18n.ENTER_DATE_HERE_I18N : date_input.val(), empty_string = merlot.i18n.TYPE_DATE_BELLOW_I18N;
     input.val(input_empty);
     date_string.text(empty_string);
     input.keyup(
@@ -277,4 +280,50 @@ function dateTranslator(date_input, date_translated) {
             }
         }
     );    
+}
+
+function listingGraphs() {
+    var today_date = $('.today-date').html();
+    var table = $('#listing-table');
+    var table_rows = $('tr', table);
+    var th = $('<th class="days-status-header">To end</th>');
+    var start_date_header = $('.start-date-header', table);
+    var end_date_header = $('.end-date-header', table);
+        
+    var hoursStatus = function(row) {
+        var canvas_elem = '<canvas></canvas>'
+        var est_dom = $('.estimate', row);
+        var woh_dom = $('.worked-hours', row);
+        est_dom.before('<td class="hours-graph">'+canvas_elem+'</td>');
+    
+        var estimation = est_dom.html() ? est_dom.html()*1 : 0;
+        var worked_hours = woh_dom.html() ? est_dom.html()*1 : 0;
+        if (estimation) {
+            //set scale
+            max_n = estimation > worked_hours ? estimation : worked_hours
+            
+        }
+    };
+    table_rows.each(function(){
+        hoursStatus($(this));
+        var td = $('<td class="days-remaining"></td>');
+        var start_date_dom  = $('.start-date', $(this));
+        var end_date_dom = $('.end-date', $(this));               
+        var start_date  = start_date_dom.html();
+        var end_date = end_date_dom.html();       
+        if (start_date && end_date) {
+            var s = Date.parse(today_date);
+            var e = Date.parse(end_date);
+            var diff = e-s;
+            var days = Math.floor(diff / (1000*60*60*24));
+            td.html(days +' days');
+        }
+        start_date_dom.before(td);
+        start_date_dom.remove();
+        end_date_dom.remove();
+        
+        start_date_header.before(th);
+        start_date_header.remove();
+        end_date_header.remove();
+    });
 }

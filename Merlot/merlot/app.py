@@ -35,6 +35,7 @@ from merlot.client import ClientContainer
 from merlot.auth import UserFolder
 import merlot.interfaces as ifaces
 from merlot import MerlotMessageFactory as _
+from datetime import datetime
 
 
 class Merlot(grok.Application, grok.Container):
@@ -134,6 +135,9 @@ class PersonalBar(grok.Viewlet):
     grok.viewletmanager(ifaces.IHeader)
     grok.context(Interface)
     grok.require('merlot.Manage')
+
+    def update(self):
+        self.td = datetime.now().strftime('%Y-%m-%d')
 
 
 class NavigationBar(grok.Viewlet):
@@ -287,7 +291,7 @@ class Index(grok.View):
         project = intids.getObject(task.project())
         self.project_id = project.id
         self.project_title = project.title
-        return project
+        return project        
 
 
 class Unauthorized(grok.View):
