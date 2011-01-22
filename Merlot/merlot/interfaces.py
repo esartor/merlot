@@ -60,7 +60,7 @@ class IUserFolder(Interface):
 
 
 class IAccount(Interface):
-    username = schema.BytesLine(title=_(u'Username'), required=True)
+    id = schema.BytesLine(title=_(u'Username'), required=True)
     real_name = schema.TextLine(title=_(u'Real name'), required=True)
     password = schema.Password(title=_(u'Password'), required=True)
 
@@ -77,12 +77,16 @@ class IAddUserForm(IAccount):
 
     @invariant
     def matching_passwords(form):
-        if form.confirm_password != form.password:
+        # XXX: we need to find out why form.password turns to be
+        # something of type 'object' when we leave the field empty
+        # in the edit form.
+        if type(form.password) != object and \
+           form.confirm_password != form.password:
             raise Invalid(_('Passwords does not match'))
 
     @invariant
     def valid_username(form):
-        if not re.compile('^[a-z0-9]+$').match(form.username):
+        if not re.compile('^[a-z0-9]+$').match(form.id):
             raise Invalid(_('Invalid user name, only characters in [a-z0-9] '
                             'are allowed'))
 
@@ -95,6 +99,9 @@ class IAddUserForm(IAccount):
 # form, the field is not required.
 class IEditUserForm(IAddUserForm):
     """Edit user form"""
+    password = schema.Password(title=_(u'Password'), required=False)
+    confirm_password = schema.Password(title=_(u'Confirm password'),
+        required=False)
 
 
 class IMetadata(Interface):
