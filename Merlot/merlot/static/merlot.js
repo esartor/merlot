@@ -242,7 +242,7 @@ function dateTranslator(date_input, date_translated) {
     // code from http://www.datejs.com/ demos
     var messages = "no match";
     var input = date_input, date_string = date_translated, date = null;
-    var input_empty = (date_input.val() === '') ? merlot.i18n.ENTER_DATE_HERE_I18N : date_input.val(), empty_string = merlot.i18n.TYPE_DATE_BELLOW_I18N;
+    var input_empty = (date_input.val() === '') ? '' : date_input.val(), empty_string = merlot.i18n.TYPE_DATE_BELLOW_I18N;
     input.val(input_empty);
     date_string.text(empty_string);
     input.keyup(
@@ -289,20 +289,79 @@ function listingGraphs() {
     var th = $('<th class="days-status-header">To end</th>');
     var start_date_header = $('.start-date-header', table);
     var end_date_header = $('.end-date-header', table);
+    var estimate_header = $('.estimate-header', table);
+    var hours_header = $('.hours-header', table);    
         
     var hoursStatus = function(row) {
-        var canvas_elem = '<canvas></canvas>'
+        //layout setup
+        var canvas_elem = '<canvas width="200" height="30"></canvas>'
         var est_dom = $('.estimate', row);
         var woh_dom = $('.worked-hours', row);
         est_dom.before('<td class="hours-graph">'+canvas_elem+'</td>');
-    
+        
+        var th_hoursusage = $('<th class="hours-usage-header">Hours Usage</th>');
+        estimate_header.before(th_hoursusage);
+        estimate_header.remove();
+        hours_header.remove();
+        
         var estimation = est_dom.html() ? est_dom.html()*1 : 0;
-        var worked_hours = woh_dom.html() ? est_dom.html()*1 : 0;
+        var worked_hours = woh_dom.html() ? woh_dom.html()*1 : 0;
         if (estimation) {
             //set scale
             max_n = estimation > worked_hours ? estimation : worked_hours
+            canvas = $('.hours-graph canvas', row)[0];
+            var ctx = canvas.getContext('2d');
             
+            var porcentage = (worked_hours / estimation) * 100;
+            var proportion = porcentage * 2 
+            
+            var max_porcentage = 100;
+            var exceded = 0;
+            if (proportion > 200) {
+                max_porcentage = Math.round(porcentage);
+                exceded = proportion - 200;
+                //we have to calculate the new proportion and exceded value
+                proportion = Math.round((200 / proportion) * 200);
+                exceded = Math.round((exceded / proportion) * 200);
+            }
+            
+            var box_height = 15;
+            //border box
+            ctx.fillStyle = "#CCC";
+            ctx.strokeRect(0, 0, 200, box_height);
+            
+            //background box
+            ctx.fillStyle = "#EEE";
+            ctx.fillRect(1, 1, 200, box_height);          
+
+            //used time
+            ctx.fillStyle = "#6AB42D";
+            ctx.fillRect(1, 1, proportion, box_height);      
+           
+            //exceded time
+            if (exceded) {
+                ctx.fillStyle = "#D61313";
+                ctx.fillRect((1+proportion), 1, exceded, box_height);
+            }
+            
+            //text 0%
+            ctx.fillStyle = "#000";            
+            ctx.textBaseline = "top";
+            ctx.fillText("0%", 0, 20);
+
+            //text not exceded %
+            if (porcentage > 0 ) {
+                ctx.textAlign = "left";
+                ctx.fillText((porcentage < 100 ? Math.round(porcentage) : '100') + "%", proportion, 5);
+            }
+            //text max %
+            ctx.textAlign = "end";
+            ctx.fillText(max_porcentage + "%", 200, 20);
         }
+        
+        //lets remove the unused columns
+        woh_dom.remove();
+        est_dom.remove();
     };
     table_rows.each(function(){
         hoursStatus($(this));

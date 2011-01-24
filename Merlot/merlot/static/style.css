@@ -71,7 +71,8 @@ img {
     display:none;
 }
 .hours-graph canvas{
-    height:15px;
+    height:30px;
+    width:200px;
 }
 /*  HEADER  */
 #header {
