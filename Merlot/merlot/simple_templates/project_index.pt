@@ -104,8 +104,8 @@
               <th class='searchable' i18n:translate="">Title</th>
               <th class="start-date-header" i18n:translate="">Start date</th>
               <th class="end-date-header" i18n:translate="">End date</th>
-              <th i18n:translate="">Estimate</th>
-              <th i18n:translate="">Hours</th>
+              <th class="estimate-header" i18n:translate="">Estimate</th>
+              <th class="hours-header" i18n:translate="">Hours</th>
               <th i18n:translate="">Actions</th>
             </tr>
           </thead>
