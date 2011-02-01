@@ -105,6 +105,7 @@
               <th class="start-date-header" i18n:translate="">Start date</th>
               <th class="end-date-header" i18n:translate="">End date</th>
               <th class="estimate-header" i18n:translate="">Estimate</th>
+              <th class="remaining-header" i18n:translate="">Remaining</th>
               <th class="hours-header" i18n:translate="">Hours</th>
               <th i18n:translate="">Actions</th>
             </tr>
@@ -128,6 +129,7 @@
                 <td class="date end-date" tal:content="task/end_date" />
                 <td class="estimate" tal:condition="task/estimate" tal:content="python: '%.2f' % task.estimate" />
                 <td class="estimate" tal:condition="python: not task.estimate"></td>
+                <td class="remaining" tal:content="task/remaining"></td>
                 <td class="worked-hours" tal:content="python: '%.2f' % viewlet.tasks_stats[task.id].getWorkedHours()"/>
                 <td class="actions">
                     <a class="log-link linkeable action edit"
