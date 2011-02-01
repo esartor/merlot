@@ -147,6 +147,12 @@ class ITask(Interface):
     next_id = schema.Int(title=_(u'Next ID'), default=1)
     title = schema.TextLine(title=_(u'Title'), required=True)
     description = schema.Text(title=_(u'Description'), required=False)
+    priority = schema.Choice(
+        title=_(u'Priority'),
+        required=False,
+        vocabulary='merlot.TaskPriorityVocabulary',
+        default=u'normal',
+    )
     status = schema.Choice(
         title=_(u'Status'),
         required=False,
@@ -161,12 +167,6 @@ class ITask(Interface):
     end_date = schema.Date(title=_(u'End date'), required=False)
     estimate = schema.Decimal(title=_(u'Hours estimate'), required=False)
     remaining = schema.Decimal(title=_(u'Remaining hours'), required=False)
-    priority = schema.Choice(
-        title=_(u'Priority'),
-        required=False,
-        vocabulary='merlot.TaskPriorityVocabulary',
-        default=u'normal',
-    )
 
     def deleteFromStarredLists():
         """Remove the task from the starred tasks lists"""
