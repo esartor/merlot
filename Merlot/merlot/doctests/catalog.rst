@@ -10,7 +10,7 @@ Catalog
 We create a project::
 
     >>> from datetime import datetime
-    >>> from merlot.simple import Project
+    >>> from merlot.project import Project
     >>> project = Project()
     >>> project.title = u'Testing'
     >>> project.start_date = datetime(2010, 10, 10).date()
@@ -33,7 +33,7 @@ We make a catalog query to find the project we've just added::
 Let's test the `project` and `task` indexes. To do so, let's create a task a
 log inside that task::
 
-    >>> from merlot.simple import Task, Log
+    >>> from merlot.project import Task, Log
     >>> task = Task()
     >>> task.title = 'A sample task'
     >>> task.description = ''
