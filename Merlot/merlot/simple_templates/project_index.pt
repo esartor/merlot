@@ -110,7 +110,7 @@
             </tr>
           </thead>
           <tbody>
-            <tal:block repeat="task context/values">
+            <tal:block repeat="task viewlet/tasks">
               <tr>
                 <td class="starred">
                   <a href="" 

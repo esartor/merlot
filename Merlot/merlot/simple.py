@@ -247,6 +247,8 @@ class ProjectIndexViewlet(grok.Viewlet):
     def update(self):
         self.stats = getMultiAdapter((self.context, self.request),
                                      ifaces.IProjectStats)
+
+        # Build a list of starred tasks for the authenticated user
         self.starred_tasks = []
         users = getUtility(IAuthenticatorPlugin, 'users')
         intids = getUtility(IIntIds, name='intids')
@@ -263,6 +265,22 @@ class ProjectIndexViewlet(grok.Viewlet):
             self.tasks_stats[i] = getMultiAdapter((self.context[i],
                                                    self.request),
                                                   ifaces.ITaskStats)
+
+        # Build a list of tasks ordered by priority and creation date
+        ordered_tasks = []
+        priorities_vocab = getUtility(IVocabularyFactory,
+                                      name='merlot.TaskPriorityVocabulary')
+        priorities = [p for (p, k, v) in priorities_vocab.terms]
+        for priority in priorities:
+            tasks = [t for t in self.context.values() if \
+                     t.priority == priority]
+            tasks = sorted(tasks, key=lambda t: t.creation_date)
+            ordered_tasks += tasks
+
+        tasks = [t for t in self.context.values() if t.priority == None]
+        ordered_tasks += tasks
+
+        self.tasks = ordered_tasks
 
 
 class DeleteProject(grok.View):
