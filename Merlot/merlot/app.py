@@ -30,7 +30,7 @@ from z3c.objpath import path, resolve
 from z3c.flashmessage.interfaces import IMessageReceiver
 
 from merlot.auth import UserAuthenticatorPlugin, setup_authentication
-from merlot.simple import ProjectContainer
+from merlot.project import ProjectContainer
 from merlot.client import ClientContainer
 from merlot.auth import UserFolder
 import merlot.interfaces as ifaces

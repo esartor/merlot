@@ -10,7 +10,7 @@ The main modules are:
 * **interfaces**: where all the interfaces for the application are defined.
 * **app**: where the Grok application is defined and the layout is defined
   based a viewlets structure.
-* **simple**: where the main models and views for projects, tasks and logs
+* **project**: where the main models and views for projects, tasks and logs
   are defined.
 
 The *interfaces* module
@@ -25,10 +25,10 @@ The *app* module
   .. automodule:: merlot.app
      :members:
 
-The *simple* module
+The *project* module
 -------------------
 
-  .. automodule:: merlot.simple
+  .. automodule:: merlot.project
      :members:
 
 The *client* module
