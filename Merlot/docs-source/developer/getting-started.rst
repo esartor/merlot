@@ -65,6 +65,12 @@ directory::
 
     $ bin/test
 
+You can generate a coverage report with the following command::
+
+    $ bin/test -s merlot --coverage=coverage
+
+The report files will be generated in HTML format in the `coverage` directory.
+
 
 Build the documentation
 -----------------------

@@ -461,6 +461,15 @@ class DataMigration(grok.View):
 
     def render(self):
         site = grok.getSite()
+
+        # Add priority attribute to tasks
+        query = {'content_type': ('Task', 'Task')}
+        catalog = getUtility(ICatalog)
+        tasks = catalog.searchResults(**query)
+        for task in tasks:
+            task.priority = u'Normal'
+
+        # Migrate user folder
         if not 'users' in site.keys():
             user_folder = UserFolder(title=u'Users')
             logging.info('Getting old users folder...')
