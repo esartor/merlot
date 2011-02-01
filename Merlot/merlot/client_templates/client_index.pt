@@ -3,15 +3,18 @@
      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
      i18n:domain="merlot">
 
+  <div class="view-actions-wrapper">
     <a class="action edit"
        title="Edit"
        tal:attributes="href python: view.url(context) + '/edit'"
        i18n:translate=""
        i18n:attributes="title edit-action-title">
       <img alt="edit"
+           class="icon"
            tal:attributes="src static/images/edit.png"
            i18n:attributes="alt img_alt_edit_action"
            i18n:name="img"/>
+           Edit
     </a>
     <a class="action delete"
        title="Delete"
@@ -19,10 +22,13 @@
        i18n:translate=""
        i18n:attributes="title delete-action-title">
       <img alt="delete"
+           class="icon"
            tal:attributes="src static/images/delete.png"
            i18n:attributes="alt img_alt_delete_action"
            i18n:name="img"/>
-    </a>    
+           Delete
+    </a>
+  </div>
 </div>
 <div id="client">
     <h1 class="edition" i18n:translate="">
