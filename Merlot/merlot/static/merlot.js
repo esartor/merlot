@@ -286,7 +286,7 @@ function listingGraphs() {
     var today_date = $('.today-date').html();
     var table = $('#listing-table');
     var table_rows = $('tr', table);
-    var th = $('<th class="days-status-header">Deadline</th>');
+    var th = $('<th class="days-status-header">Due in</th>');
     var start_date_header = $('.start-date-header', table);
     var end_date_header = $('.end-date-header', table);
     var estimate_header = $('.estimate-header', table);
@@ -410,9 +410,10 @@ function listingGraphs() {
             var diff = e-s;
             var days = Math.floor(diff / (1000*60*60*24));
             if (days < 0) {
-                var days_status = ' past';
+                days = -days
+                var days_status = ' behind';
             } else {
-                var days_status = ' before';
+                var days_status = '';
             }
             td.html(days +' days' + days_status);
         } else {

@@ -214,6 +214,12 @@ img {
     margin:0px;
     display:inline-block;
 }
+.empty-description {
+    font-size:1em;
+    font-weight:bold;
+    text-align:center;
+    margin-top:5em;
+}
 /*context bar*/
 #context-bar {
     float:left;
@@ -698,6 +704,7 @@ td.actions {
 .colapsable {
     background-color:#EEE;
     padding:5px 10px;
+    clear:both;
 }
 .colapsable table {
     background-color:#FFF;
