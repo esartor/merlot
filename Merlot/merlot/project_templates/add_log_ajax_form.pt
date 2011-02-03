@@ -8,21 +8,21 @@
           class="edit-form">
 
         <div class="field-container">
-            <span class="header" i18n:translate="">hours: </span>
+            <span class="header" i18n:translate="">Hours: </span>
             <input type="text" value="" size="3" name="form.hours" id="form.hours" class="textType"/>
-            <span class="header" i18n:translate="">remain: </span>
+            <span class="header" i18n:translate="">Remaining: </span>
             <input tal:replace="structure view/widgets/remaining"/>
             <!-- <input type="text" value="" size="3" name="form.remaining" id="form.remaining" class="textType"> -->
         </div>
         <div class="field-container">
-            <span class="header" i18n:translate="">description: </span>
+            <span class="header" i18n:translate="">Description: </span>
             <textarea rows="3" name="form.description" id="form.description" cols="26"></textarea>
         </div>
         <div class="field-container">        
             <span class="date-translated"></span>            
         </div>
         <div class="field-container">
-            <span class="header" i18n:translate="">date:</span>
+            <span class="header" i18n:translate="">Date:</span>
             <input type="text" value="" size="12" name="form.date" id="form.date" class="textType"/>
         </div>
 
