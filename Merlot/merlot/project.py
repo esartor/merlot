@@ -48,9 +48,9 @@ class ProjectContainerIndex(grok.View):
 
 class ProjectContainerListing(grok.View):
     grok.context(ifaces.IProjectContainer)
-    grok.name('project_container_listing_template')
+    grok.name('projects_listing')
     grok.require('merlot.Manage')
-    grok.template('project_container_listing_template')
+    grok.template('projects_listing')
     grok.order(1)
 
     def update(self):
@@ -579,7 +579,7 @@ class AddLogAjax(grok.AddForm):
     grok.name('add-log-ajax')
     grok.require('merlot.Manage')
     form_fields = grok.AutoFields(ifaces.ILog).omit('user')
-    template = grok.PageTemplateFile('log_templates/add_log_ajax_form.pt')
+    template = grok.PageTemplateFile('project_templates/add_log_ajax_form.pt')
 
     @grok.action(_(u'Log'))
     def save(self, **data):
