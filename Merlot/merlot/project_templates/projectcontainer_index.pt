@@ -10,7 +10,7 @@
         <ul class="filters">
             <li>
                 <a i18n:translate="">Per status</a>
-                <form action="project_container_listing_template">
+                <form action="projects_listing">
                     <select name="status">
                         <option></option>
                         <tal:statuses repeat="status viewlet/statuses">
@@ -36,7 +36,7 @@
     </div>
 </div>
 <div class="results row">
-    <div tal:replace="structure context/@@project_container_listing_template">listing table</div>
+    <div tal:replace="structure context/@@projects_listing">listing table</div>
 </div>
 <div class="ajax-load">
     <img alt="ajax-load" tal:attributes="src static/images/ajax-load.gif"/>

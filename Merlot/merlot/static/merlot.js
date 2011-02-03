@@ -74,7 +74,7 @@ $(document).ready(function() {
     $('#project-container .filters select').change(function() {
         $('.ajax-load').css('display', 'block');
         $.ajax({
-          url: 'project_container_listing_template',
+          url: 'projects_listing',
           data:({status : this.value}),
           success: function(data) {
             $('.results').html(data);

@@ -11,6 +11,7 @@ as admin::
 
     >>> from zope.app.wsgi.testlayer import Browser
     >>> browser = Browser()
+    >>> browser.handleErrors = False
     >>> browser.addHeader('Authorization', 'Basic admin:admin')
     >>> browser.open('http://localhost/app')
     >>> 'Logged in as: Manager' in browser.contents
