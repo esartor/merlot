@@ -49,33 +49,35 @@
           <li tal:condition="status">
             <b i18n:translate="">Status:</b>
             <tal:block content="status"/>
+          </li>        
+          <li tal:define="worked_hours viewlet/stats/getWorkedHours"
+              tal:condition="worked_hours">
+            <b i18n:translate="">Total worked hours:</b>
+            <tal:block content="python: '%.2f' % worked_hours"/>
+          </li>
+
+          <li tal:define="user_worked_hours viewlet/stats/getUserWorkedHours"
+              tal:condition="user_worked_hours">
+            <b i18n:translate="">Hours worked by me:</b>
+            <tal:block content="python: '%.2f' % user_worked_hours"/>
           </li>
           <li>
-            <b>Starred:</b>
+            <b i18n:translate="">Starred:</b>
               <a href=""
                  tal:attributes="href python:view.url(context) + '/toggle-starred';
                                  class python:'starred-selected' if starred else 'starred-not-selected'">
               </a>
-          </li>                    
+          </li>
         </ul>
       </div>
     </div>
     <div class="content-column">
-      <p tal:content="context/description"/>
+      <p tal:condition="context/description" tal:content="context/description"/>
+      <p tal:condition="not: context/description" i18n:translate="" class="empty-description">
+        There is not description for this task.
+      </p>
     </div>
   </div>
-  <span tal:define="worked_hours viewlet/stats/getWorkedHours;
-                    user_worked_hours viewlet/stats/getUserWorkedHours;">
-    <tal:wh tal:condition="worked_hours">
-      <b i18n:translate="">Total worked hours:</b>
-      <tal:block content="python: '%.2f' % worked_hours"/> |
-    </tal:wh>
-    <tal:uwh tal:condition="user_worked_hours">
-      <b i18n:translate="">Hours worked by me:</b>
-      <tal:block content="python: '%.2f' % user_worked_hours"/>
-    </tal:uwh>
-  </span>
-  
   <tal:logs condition="context/items">
   <div class="colapsable">  
   <h2 i18n:translate="">Logs</h2>

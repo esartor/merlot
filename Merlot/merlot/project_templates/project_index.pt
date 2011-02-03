@@ -27,43 +27,40 @@
           <ul tal:define="start_date context/start_date;
                           end_date context/end_date;
                           status context/status;">
-            <li>
-              <tal:sd tal:condition="start_date">
+            <li tal:condition="start_date">
                 <b i18n:translate="">Start date:</b>
                 <tal:block content="start_date"/>
-              </tal:sd>
             </li>
-            <li>
-              <tal:ed tal:condition="end_date">
+            <li tal:condition="end_date">
                 <b i18n:translate="">End date:</b>
                 <tal:block content="end_date"/>
-              </tal:ed>
             </li>
-            <li>
-              <tal:s tal:condition="status">
+            <li tal:condition="status">
                 <b i18n:translate="">Status:</b>
                 <tal:block content="status"/>
-              </tal:s>
             </li>
+           <li tal:define="worked_hours viewlet/stats/getWorkedHours"
+               tal:condition="worked_hours">
+             <b i18n:translate="">Total worked hours:</b>
+             <tal:block content="python: '%.2f' % worked_hours"/>
+           </li>
+           <li tal:define="user_worked_hours viewlet/stats/getUserWorkedHours"
+               tal:condition="user_worked_hours">
+             <b i18n:translate="">Hours worked by me:</b>
+             <tal:block content="python: '%.2f' % user_worked_hours"/>
+           </li>
           </ul>
         </div>
       </div>
 
       <div class="content-column">
-        <p tal:content="context/description"/>
+      <p tal:condition="context/description" tal:content="context/description"/>
+      <p tal:condition="not: context/description" i18n:translate="" class="empty-description">
+        There is not description for this project.
+      </p>
       </div>
     </div>
-    <span tal:define="worked_hours viewlet/stats/getWorkedHours;
-                      user_worked_hours viewlet/stats/getUserWorkedHours;">
-      <tal:wh tal:condition="worked_hours">
-        <b i18n:translate="">Total worked hours:</b>
-        <tal:block content="python: '%.2f' % worked_hours"/> |
-      </tal:wh>
-      <tal:uwh tal:condition="user_worked_hours">
-        <b i18n:translate="">Hours worked by me:</b>
-        <tal:block content="python: '%.2f' % user_worked_hours"/>
-      </tal:uwh>
-    </span>
+
 
     <h2 i18n:translate="">Tasks</h2>
     <div id="context-bar">
