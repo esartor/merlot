@@ -33,7 +33,6 @@
                 <th i18n:translate="">Fav</th>
                 <th i18n:translate="">Status</th>
                 <th class="searchable" i18n:translate="">Title and description</th>
-                <th i18n:translate="">Project</th>
                 <th></th>
             </tr>
         </thead>
@@ -52,12 +51,10 @@
                               tal:content="status">In progress</span>
                     </td>
                     <td class="title-and-description">
+                        <h4 i18n:translate="">Project: <a tal:attributes="href python:view.application_url() +'/projects/'+project_id "><span tal:content="view/project_title"></span></a><span class="client-tag" tal:content="python:project_obj.client.to_object.title"></span></h4>
                         <h4><a tal:attributes="href task_url"
-                            tal:content="python:task.title"></a><span class="client-tag" tal:content="python:project_obj.client.to_object.title"></span></h4>
+                            tal:content="python:task.title"></a></h4>
                         <span class="description" tal:content="python:task.description and task.description[:100] or '...'"></span>
-                    </td>
-                    <td class="project">
-                        <a tal:attributes="href python:view.application_url() +'/projects/'+project_id "><span tal:content="view/project_title"></span></a>
                     </td>
                     <td class="actions">
                         <div class="actions-wrapper">
