@@ -195,6 +195,7 @@ class UserFolderIndexViewlet(grok.Viewlet):
 
 class Account(grok.Model):
     grok.implements(ifaces.IAccount)
+    content_type = 'Account'
 
     def __init__(self, username, password, real_name):
         self.id = username

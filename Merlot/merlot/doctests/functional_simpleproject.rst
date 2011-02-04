@@ -53,7 +53,7 @@ Since we must associate projects to clients, let's start by creating a client::
 
 Now we can create a project. Let's try to submit the add project form after
 filling just the title and check that we get proper validation errors to fill
-required fields.
+required fields::
 
     >>> browser.getLink('Projects').click()
     >>> browser.getLink('Add new Project').click()

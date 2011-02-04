@@ -371,7 +371,7 @@ class DeleteConfirmationForm(grok.Form):
     @grok.action(_('Cancel'))
     def cancel(self, **data):
         """Redirect to where you came from"""
-        if self.context.content_type == 'Log':
+        if self.context.content_type in ['Log', 'Account']:
             return self.redirect(self.url(self.context.__parent__))
         else:
             return self.redirect(self.url(self.context))
