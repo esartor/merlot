@@ -54,13 +54,13 @@ integer ID for each object and later look up objects by their IDs::
     >>> intids = getUtility(IIntIds, name='intids', context=app)
 
 The last local utility registered is a relation catalog utility that allow us
-to keep track of relations between objects.
+to keep track of relations between objects::
 
     >>> from zc.relation.interfaces import ICatalog
     >>> rel_catalog = getUtility(ICatalog, context=app)
 
 A global utility is registered to resolve to an object given a path and vice
-versa.
+versa::
 
     >>> from z3c.objpath.interfaces import IObjectPath
     >>> object_path = getUtility(IObjectPath)

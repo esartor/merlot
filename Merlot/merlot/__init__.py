@@ -5,4 +5,4 @@ MerlotMessageFactory = MessageFactory('merlot')
 
 # BBB
 import merlot.project
-sys.modules['merlot.simple'] = sys.modules['merlot.project']
+sys.modules['merlot.simple'] = merlot.project

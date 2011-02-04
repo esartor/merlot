@@ -195,7 +195,7 @@ If we set the `from` date to yesterday, we will also get yesterday's logs::
     >>> 'Finish document' in browser.contents
     False
 
-If we rescrict the report to `Project One`
+If we rescrict the report to `Project One`::
 
     >>> browser.getControl(name='form.project_or_client').value = \
     ...     ('/app/projects/project-one',)

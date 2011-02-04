@@ -274,6 +274,22 @@ Now let's delete the user `Testing User`::
     >>> browser.getLink('delete', index=1).click()
     >>> 'Are you sure you want to delete the "user" item?' in browser.contents
     True
+
+We can cancel the deletion, in that case, the user won't be deleted and we will
+get redirected to the user listing::
+
+    >>> browser.getControl('Cancel').click()
+    >>> browser.url
+    'http://localhost/app/users'
+    >>> 'Testing User' in browser.contents
+    True
+
+Well, let's delete the user for real now::
+
+    >>> browser.getLink('Users').click()
+    >>> browser.getLink('delete', index=1).click()
+    >>> 'Are you sure you want to delete the "user" item?' in browser.contents
+    True
     >>> browser.getControl('Delete').click()
     >>> 'User deleted.' in browser.contents
     True
