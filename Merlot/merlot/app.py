@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """A Grok application to manage projects.
 
 In this module it's defined the Grok application class and the elements
@@ -46,7 +47,7 @@ class Merlot(grok.Application, grok.Container):
 
     def __init__(self):
         super(Merlot, self).__init__()
-        self.title = _(u'Merlot -- Project Management System')
+        self.title = _(u'Merlot — Project Management Software')
 
         projs_container = ProjectContainer(title=u'Projects')
         self['projects'] = projs_container

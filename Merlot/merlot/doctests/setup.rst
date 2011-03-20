@@ -10,7 +10,7 @@ The `app` variable is binded in out tests setup to a brand new created Merlot
 object. The Merlot object has a title::
 
     >>> app.title
-    u'Merlot -- Project Management System'
+    u'Merlot \u2014 Project Management Software'
 
 When the application is created, containers for projects, clients and users get
 also created::
