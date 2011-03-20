@@ -437,13 +437,18 @@ class I18nJavascript(grok.View):
             'SUCCESS_I18N': _('Success'),
             'MORE_I18N': _('More'),
             'ENTER_DATE_HERE_I18N': _("Enter a date here"),
-            'TYPE_DATE_BELLOW_I18N': _("Type a date bellow"),
+            'TYPE_DATE_BELOW_I18N': _("Type a date below"),
             'TODAY_I18N': _('Today'),
             'LAST_7_DAYS_I18N': _('Last 7 days'),
             'MONTH_TO_DATE_I18N': _('Month to date'),
-            'PREVIOUS_MONTH_I18N': _('The previous Month'),
+            'PREVIOUS_MONTH_I18N': _('The previous month'),
             'DATE_RANGE_I18N': _('Date Range'),
-            'SPECIFIC_DATE_I18N': _('Specific Date')}
+            'SPECIFIC_DATE_I18N': _('Specific Date'),
+            'DUE_IN_I18N': _('Due in'),
+            'HOURS_USAGE_I18N': _('Hours Usage'),
+            'BEHIND_I18N': _('behind'),
+            'DAYS_I18N': _('days'),
+            'NO_DEADLINE': _('Deadline not set')}
         message_variable = "merlot = {};merlot.i18n = {\n%s}\n"
         response = self.request.response
         response.setHeader('Content-Type', 'text/javascript; charset=UTF-8')

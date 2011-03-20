@@ -37,7 +37,7 @@
             </li>
             <li tal:condition="status">
                 <b i18n:translate="">Status:</b>
-                <tal:block content="status"/>
+                <tal:block i18n:translate="" content="status"/>
             </li>
            <li tal:define="worked_hours viewlet/stats/getWorkedHours"
                tal:condition="worked_hours">
@@ -113,7 +113,7 @@
                 <td class="starred">
                   <a href="" 
                      tal:attributes="href string:${task/id}/toggle-starred?camefrom=${view/url};
-                                     class python:'starred-selected' if task.id in viewlet.starred_tasks else 'starred-not-selected'"></a>
+                                     class python:'starred-selected' if task in viewlet.starred_tasks else 'starred-not-selected'"></a>
                 </td>
                 <td class="status" tal:define="status task/status">
                     <span tal:attributes="class python:status.replace(' ', '').lower() if status else 'none'" 

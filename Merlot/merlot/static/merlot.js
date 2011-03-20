@@ -7,7 +7,7 @@ $(document).ready(function() {
 
 
     function dateTranslatorSetup(input) {
-        input.before('<span class="date-translated">'+merlot.i18n.TYPE_DATE_BELLOW_I18N+'</span>');
+        input.before('<span class="date-translated">'+merlot.i18n.TYPE_DATE_BELOW_I18N+'</span>');
     };    
     
     $("#form\\.date").datepicker({"dateFormat": dateFormat});
@@ -242,7 +242,7 @@ function dateTranslator(date_input, date_translated) {
     // code from http://www.datejs.com/ demos
     var messages = "no match";
     var input = date_input, date_string = date_translated, date = null;
-    var input_empty = (date_input.val() === '') ? '' : date_input.val(), empty_string = merlot.i18n.TYPE_DATE_BELLOW_I18N;
+    var input_empty = (date_input.val() === '') ? '' : date_input.val(), empty_string = merlot.i18n.TYPE_DATE_BELOW_I18N;
     input.val(input_empty);
     date_string.text(empty_string);
     input.keyup(
@@ -286,7 +286,7 @@ function listingGraphs() {
     var today_date = $('.today-date').html();
     var table = $('#listing-table');
     var table_rows = $('tr', table);
-    var th = $('<th class="days-status-header">Due in</th>');
+    var th = $('<th class="days-status-header">'+merlot.i18n.DUE_IN_I18N+'</th>');
     var start_date_header = $('.start-date-header', table);
     var end_date_header = $('.end-date-header', table);
     var estimate_header = $('.estimate-header', table);
@@ -301,7 +301,7 @@ function listingGraphs() {
         var rem_el = $('.remaining', row);
         est_el.before('<td class="hours-graph">'+canvas_elem+'</td>');
         
-        var th_hoursusage = $('<th class="hours-usage-header">Hours Usage</th>');
+        var th_hoursusage = $('<th class="hours-usage-header">'+merlot.i18n.HOURS_USAGE_I18N+'</th>');
         estimate_header.before(th_hoursusage);
         estimate_header.remove();
         remaining_header.remove();
@@ -421,14 +421,14 @@ function listingGraphs() {
                 var days = Math.floor(diff / (1000*60*60*24));
                 if (days < 0) {
                     days = -days
-                    var days_status = ' behind';
+                    var days_status = ' ' + merlot.i18n.BEHIND_I18N;
                 } else {
                     var days_status = '';
                 }
-                td.html(days +' days' + days_status);
+                td.html(days + ' ' + merlot.i18n.DAYS_I18N + days_status);
             } else {
                 if (!end_date) {
-                    td.html('no deadline');
+                    td.html(merlot.i18n.NO_DEADLINE_I18N);
                 }
             }
         } else {
