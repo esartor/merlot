@@ -6,7 +6,7 @@
 Welcome to Merlot's documentation!
 ==================================
 
-Merlot is a web based project management software written in Python using the
+Merlot is a web-based project management software written in Python using the
 `Grok <http://grok.zope.org>`_ web development framework.
 
 Merlot is under development, but it currently allows you to:

@@ -4,7 +4,7 @@ version = '1.0'
 
 setup(name='Merlot',
       version=version,
-      description="A web based project management software",
+      description="A web-based project management software",
       long_description="",
       # Get strings from http://pypi.python.org/pypi?:action=list_classifiers
       classifiers=[
