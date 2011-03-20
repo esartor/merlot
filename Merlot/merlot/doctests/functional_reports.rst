@@ -6,6 +6,9 @@ Reports Functional Tests
 .. :teardown: merlot.tests.teardown
 .. :layer: merlot.tests.browser_layer
 
+There are currently two reports available, a `Logs report` and a `Tasks
+report`. Read on to learn about what those are about.
+
 We need to create a user to play with later. First of all we access the site
 as admin::
 

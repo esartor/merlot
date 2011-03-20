@@ -1,13 +1,16 @@
-"""A Grok application to track projects.
+"""A Grok application to manage projects.
 
 In this module it's defined the Grok application class and the elements
 that will be repeated all over the application such as viewlet
-managers, common viewlets, the path bar, the personal bar, among
+managers, common viewlets like the path bar, the personal bar, among
 others.
 """
 
+from datetime import datetime
 import logging
+
 import grok
+
 from zope.interface import Interface
 from zope import schema
 from zope.component import getUtility, getMultiAdapter
@@ -35,7 +38,6 @@ from merlot.client import ClientContainer
 from merlot.auth import UserFolder
 import merlot.interfaces as ifaces
 from merlot import MerlotMessageFactory as _
-from datetime import datetime
 
 
 class Merlot(grok.Application, grok.Container):
@@ -53,6 +55,7 @@ class Merlot(grok.Application, grok.Container):
         user_folder = UserFolder(title=u'Users')
         self['users'] = user_folder
 
+    # Register local utilities
     grok.local_utility(UserAuthenticatorPlugin,
                        provides=IAuthenticatorPlugin,
                        name='users')
@@ -92,7 +95,7 @@ class Head(grok.ViewletManager):
 class Header(grok.ViewletManager):
     """The header viewlet manager.
 
-    The top part of the body tag of the HTML document, where you
+    The top part of the body tag element of the HTML document, where you
     usually put the logo.
     """
     grok.implements(ifaces.IHeader)
@@ -452,41 +455,41 @@ class I18nJavascript(grok.View):
         return message_variable % template[:-2]
 
 
-class DataMigration(grok.View):
-    """Migrate Data.fs' that existed previous to moving the source to
-    the current repo.
-    """
-    grok.context(Interface)
-    grok.name('data-migration-pre-hg')
-
-    def render(self):
-        site = grok.getSite()
-
-        # Add priority attribute to tasks
-        query = {'content_type': ('Task', 'Task')}
-        catalog = getUtility(ICatalog)
-        tasks = catalog.searchResults(**query)
-        for task in tasks:
-            task.priority = u'Normal'
-
-        # Migrate user folder
-        if not 'users' in site.keys():
-            user_folder = UserFolder(title=u'Users')
-            logging.info('Getting old users folder...')
-            old_user_folder = getUtility(IAuthenticatorPlugin, \
-                'users').user_folder
-            logging.info('Done, old users found:' + \
-                str([x for x in old_user_folder]))
-            for user_key in old_user_folder:
-                user_folder[user_key] = old_user_folder[user_key]
-            site['users'] = user_folder
-
-            logging.info('Checking attributes...')
-            for account in user_folder:
-                user_folder[account].id = user_folder[account].name
-                del user_folder[account].name
-            del old_user_folder
-            logging.info('Data migrated successfully.')
-        else:
-            logging.info('Old data already migrated?')
-            logging.warning('Nothing done, exiting.')
+#class DataMigration(grok.View):
+#    """Migrate Data.fs' that existed previous to moving the source to
+#    the current repo.
+#    """
+#    grok.context(Interface)
+#    grok.name('data-migration-pre-hg')
+#
+#    def render(self):
+#        site = grok.getSite()
+#
+#        # Add priority attribute to tasks
+#        query = {'content_type': ('Task', 'Task')}
+#        catalog = getUtility(ICatalog)
+#        tasks = catalog.searchResults(**query)
+#        for task in tasks:
+#            task.priority = u'Normal'
+#
+#        # Migrate user folder
+#        if not 'users' in site.keys():
+#            user_folder = UserFolder(title=u'Users')
+#            logging.info('Getting old users folder...')
+#            old_user_folder = getUtility(IAuthenticatorPlugin, \
+#                'users').user_folder
+#            logging.info('Done, old users found:' + \
+#                str([x for x in old_user_folder]))
+#            for user_key in old_user_folder:
+#                user_folder[user_key] = old_user_folder[user_key]
+#            site['users'] = user_folder
+#
+#            logging.info('Checking attributes...')
+#            for account in user_folder:
+#                user_folder[account].id = user_folder[account].name
+#                del user_folder[account].name
+#            del old_user_folder
+#            logging.info('Data migrated successfully.')
+#        else:
+#            logging.info('Old data already migrated?')
+#            logging.warning('Nothing done, exiting.')
