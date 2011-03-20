@@ -1,9 +1,9 @@
 """This module defines all the interfaces used in the application.
 """
 
-from random import randint
-import grok
 import re
+
+import grok
 
 from zope import schema
 from zope.interface import Interface, invariant, Invalid, Attribute
@@ -15,6 +15,7 @@ from merlot import MerlotMessageFactory as _
 
 
 class IMerlot(Interface):
+    """A grok application to manage projects"""
     title = schema.TextLine(title=_(u'Title'), required=True)
 
 
@@ -35,48 +36,63 @@ class IFooter(Interface):
 
 
 # Sources
-class ColorGenerator():
-    """Color factory generator convert an (R, G, B) tuple to #RRGGBB """
-
-    def getValues(self):
-        rgb_tuple = (randint(0, 255), randint(0, 255), randint(0, 255))
-        hexcolor = u'#%02x%02x%02x' % rgb_tuple
-        # that's it! '%02x' means zero-padded, 2-digit hex values
-        return hexcolor
-
-
 class ClientSource(RelationSourceFactory):
+    """A source whose items are all the existing clients in the Merlot
+    application.
+    """
 
     def getTargets(self):
+        """The source targets is a list of the client objects"""
         return [b for b in grok.getSite()['clients'].values()]
 
     def getTitle(self, value):
+        """Get the title of a given source item"""
         return value.to_object.title
+
+
+# from random import randint
+# class ColorGenerator():
+#     """Color factory generator convert an (R, G, B) tuple to #RRGGBB"""
+#
+#     def getValues(self):
+#         rgb_tuple = (randint(0, 255), randint(0, 255), randint(0, 255))
+#         hexcolor = u'#%02x%02x%02x' % rgb_tuple
+#         # that's it! '%02x' means zero-padded, 2-digit hex values
+#         return hexcolor
 
 
 # Auth interfaces
 class IUserFolder(Interface):
+    """A container for objects that will store the system users
+    information.
+    """
     title = schema.TextLine(title=_(u'Title'), required=True)
 
 
 class IAccount(Interface):
+    """An account object will maintain the data of the system users"""
     id = schema.BytesLine(title=_(u'Username'), required=True)
     real_name = schema.TextLine(title=_(u'Real name'), required=True)
     password = schema.Password(title=_(u'Password'), required=True)
 
 
 class ILoginForm(Interface):
+    """Login form fields"""
     username = schema.BytesLine(title=_(u'Username'), required=False)
     camefrom = schema.BytesLine(title=u'', required=False)
     password = schema.Password(title=_(u'Password'), required=False)
 
 
 class IAddUserForm(IAccount):
+    """Add user form fields and invariants"""
     confirm_password = schema.Password(title=_(u'Confirm password'),
         required=True)
 
     @invariant
-    def matching_passwords(form):
+    def matchingPasswords(form):
+        """Check that the password and the password confirmation fields
+        match.
+        """
         # XXX: we need to find out why form.password turns to be
         # something of type 'object' when we leave the field empty
         # in the edit form.
@@ -85,38 +101,59 @@ class IAddUserForm(IAccount):
             raise Invalid(_('Passwords does not match'))
 
     @invariant
-    def valid_username(form):
+    def validUsername(form):
+        """Check that the user name is valid"""
         if not re.compile('^[a-z0-9]+$').match(form.id):
             raise Invalid(_('Invalid user name, only characters in [a-z0-9] '
                             'are allowed'))
 
 
-# XXX: I would like to use the same interface for both the add and edit
-# user forms, but grok.Fields does not seem to generate copies of the
-# fields; instead, both forms end up pointing to the same actual
-# fields. So when in the edit form I do
-# form_fields['password'].field = False and then go back to the add
-# form, the field is not required.
+# I would like to use the same interface for both the add and edit user
+# forms, but those two forms have a notable difference: while the
+# password and confirm password fields are required in the add form,
+# they are not required in the edit form (leaving the fields empty in
+# the edit form will keep the user password unchanged).
+#
+# I tried to implement that difference by doing:
+# form_fields['password'].field.required = False in the setUpWidgets
+# method, but grok.Fields does not seem to generate copies of the
+# fields; instead, both forms end up pointing to the same actual fields.
+# So when I go to an edit form the fields are not requrired, when I go
+# back to the add form, the field is not required either.
 class IEditUserForm(IAddUserForm):
-    """Edit user form"""
+    """Edit user form fields"""
     password = schema.Password(title=_(u'Password'), required=False)
     confirm_password = schema.Password(title=_(u'Confirm password'),
         required=False)
 
 
 class IMetadata(Interface):
+    """An interface to define metadata that we want to store for certain
+    objects.
+    """
     id = schema.BytesLine(title=_(u'ID'))
+    """The ID is a string that identifies the object inside the
+    container the object is in.
+    """
+
     creator = schema.TextLine(title=_(u'Creator'))
+    """A reference to the user that created the object"""
+
     creation_date = schema.Datetime(title=_(u'Creation date'))
+    """The object creation date"""
+
     modification_date = schema.Datetime(title=_(u'Modification date'))
+    """The last time the object was modified"""
 
 
 # Simple project interfaces
 class IProjectContainer(Interface):
+    """A container that contains project objects"""
     title = schema.TextLine(title=_(u'Title'), required=True)
 
 
 class IProject(Interface):
+    """A simple project"""
     title = schema.TextLine(title=_(u'Title'), required=True)
     description = schema.Text(title=_(u'Description'), required=False)
     status = schema.Choice(
@@ -137,14 +174,25 @@ class IProject(Interface):
                                   required=True)
 
     @invariant
-    def start_before_end(project):
+    def startBeforeEnd(project):
+        """Check that the start date is prior to the end date"""
         if project.end_date and project.start_date:
             if project.end_date < project.start_date:
                 raise Invalid(_('Start date must preceed end date'))
 
 
 class ITask(Interface):
+    """A simple task"""
+
     next_id = schema.Int(title=_(u'Next ID'), default=1)
+    """The next ID to be used for the contained log objects.
+
+    Tasks will contain logs. Logs inside a task will have IDs
+    following the serie '1', '2', '3' and so on. This attribute stores
+    the ID to be used for the next log object to be added inside the
+    task.
+    """
+
     title = schema.TextLine(title=_(u'Title'), required=True)
     description = schema.Text(title=_(u'Description'), required=False)
     priority = schema.Choice(
@@ -172,13 +220,15 @@ class ITask(Interface):
         """Remove the task from the starred tasks lists"""
 
     @invariant
-    def start_before_end(task):
+    def startBeforeEnd(task):
+        """Check that the start date is prior to the end date"""
         if task.end_date and task.start_date:
             if task.end_date < task.start_date:
                 raise Invalid(_('Start date must preceed end date'))
 
 
 class ILog(Interface):
+    """A time log object"""
     description = schema.Text(title=_(u'Description'), required=True)
     date = schema.Date(
         title=_(u'Date'),
@@ -193,6 +243,7 @@ class ILog(Interface):
         required=False)
 
 
+# Stats adapters
 class ITaskStats(Interface):
     """Task statistics"""
 
@@ -218,11 +269,13 @@ class IProjectStats(Interface):
 
 
 class IClientContainer(Interface):
+    """A container for client objects"""
     next_id = schema.Int(title=_(u'Next ID'), default=1)
     title = schema.TextLine(title=_(u'Title'), required=True)
 
 
 class IClient(Interface):
+    """A client object"""
     title = schema.TextLine(title=_(u'Title'), required=True)
     type = schema.Choice(
         title=_(u'Type'),
@@ -234,6 +287,9 @@ class IClient(Interface):
 
 
 class ISearchable(Interface):
+    """The attributes and methods in this interface represent catalog
+    indexes.
+    """
     title = Attribute('title')
     description = Attribute('description')
     start_date = Attribute('start_date')
@@ -256,6 +312,7 @@ class ISearchable(Interface):
 
 
 class ILogsReport(Interface):
+    """The logs report form"""
     project_or_client = schema.Choice(
         title=_(u'Project'),
         required=True,
@@ -279,6 +336,7 @@ class ILogsReport(Interface):
 
 
 class ITasksReport(Interface):
+    """The tasks report form"""
     projects = schema.Choice(
         title=_(u'Project'),
         required=True,
