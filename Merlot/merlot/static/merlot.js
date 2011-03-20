@@ -403,23 +403,28 @@ function listingGraphs() {
         var start_date_dom  = $('.start-date', $(this));
         var end_date_dom = $('.end-date', $(this));               
         var start_date  = start_date_dom.html();
-        var end_date = end_date_dom.html();       
-        if (start_date && end_date) {
-            var s = Date.parse(today_date);
-            var e = Date.parse(end_date);
-            var diff = e-s;
-            var days = Math.floor(diff / (1000*60*60*24));
-            if (days < 0) {
-                days = -days
-                var days_status = ' behind';
+        var end_date = end_date_dom.html();   
+        var completed = $('.status .completed', $(this));
+        if (completed.length == 0) {
+            if (start_date && end_date) {
+                var s = Date.parse(today_date);
+                var e = Date.parse(end_date);
+                var diff = e-s;
+                var days = Math.floor(diff / (1000*60*60*24));
+                if (days < 0) {
+                    days = -days
+                    var days_status = ' behind';
+                } else {
+                    var days_status = '';
+                }
+                td.html(days +' days' + days_status);
             } else {
-                var days_status = '';
+                if (!end_date) {
+                    td.html('no deadline');
+                }
             }
-            td.html(days +' days' + days_status);
         } else {
-            if (!end_date) {
-                td.html('no deadline');
-            }
+            td.html('completed');
         }
         start_date_dom.before(td);
         start_date_dom.remove();
