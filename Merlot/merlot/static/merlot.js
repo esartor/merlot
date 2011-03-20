@@ -307,7 +307,7 @@ function listingGraphs() {
         remaining_header.remove();
         hours_header.remove();
         
-        var estimation = est_el.html() ? est_el.html()*1 : 0;
+        var estimation = est_el.length ? est_el.html()*1 : 0;
         var worked_hours = woh_el.html() ? woh_el.html()*1 : 0;
         var remaining_hours = rem_el.html() ? rem_el.html()*1 : 0;
         if (estimation) {
@@ -389,6 +389,14 @@ function listingGraphs() {
             if (porcentage > 0 ) {
                 ctx.textAlign = "left";
                 ctx.fillText((porcentage < 100 ? Math.round(porcentage) : '100') + "%", proportion+3, 5);
+            }
+        } else {
+            if (est_el.length){
+                canvas = $('.hours-graph canvas', row)[0];
+                var ctx = canvas.getContext('2d'); 
+
+                ctx.fillStyle = "#000";
+                ctx.fillText(worked_hours +' hours', 0, 20);
             }
         }
         
