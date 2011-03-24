@@ -8,7 +8,7 @@ ChangeLog
 * Silvestre Huens (quimera)
 * Juan A. Diaz (nueces)
 
-**1.0dev**
+**0.1 - 2011-03-24**
 
 * Initial implementation: models for projects, tasks, logs, users and clients
   and related views; quick log feature; starred tasks feature; reports section
