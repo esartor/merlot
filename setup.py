@@ -1,14 +1,14 @@
 from setuptools import setup, find_packages
 
-version = '1.0'
+version = '0.1'
 
 setup(name='Merlot',
       version=version,
       description="A web-based project management software",
-      long_description="",
+      long_description=open("README.txt").read(),
       # Get strings from http://pypi.python.org/pypi?:action=list_classifiers
       classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
         'Framework :: Zope3',
         'Intended Audience :: Other Audience',
@@ -17,7 +17,7 @@ setup(name='Merlot',
         'Programming Language :: Python',
         'Topic :: Other/Nonlisted Topic',
       ],
-      keywords="grok zope project tracking",
+      keywords="grok zope project management",
       author="Emanuel Sartor, Silvestre Huens",
       author_email="emanuel@menttes.com, shuens@menttes.com",
       url="http://code.google.com/p/merlot/",
