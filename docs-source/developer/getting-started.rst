@@ -27,7 +27,7 @@ The first thing you need to do is to clone the Mercurial repository::
 Then change to the working directory, create a virtualenv right there and
 activate it::
 
-    $ cd merlot/Merlot
+    $ cd merlot
     $ virtualenv --python=/usr/bin/python2.6 --no-site-packages .
     $ source bin/activate
 
