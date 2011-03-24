@@ -18,8 +18,8 @@ Merlot is under development, but it currently allows you to:
 * Have a set of favorite tasks on a per user basis
 * Quickly log time in a task via the `quick log feature`
 
-Currently, the best way to get your own Merlot instance up and running is by
-following the instructions in the :ref:`dev-getting-started` guide.
+You can follow the :ref:`installation` guide to get your own Merlot instance up
+and running.
 
 The project is hosted in Google Code at: http://code.google.com/p/merlot/.
 There you will find screenshots, links to the issue tracker, mailing list and
@@ -31,10 +31,11 @@ Contents
 .. toctree::
    :maxdepth: 2
 
-   changelog
+   installation
    developer/getting-started
    developer/automated-tests
    developer/source-code-reference
+   changelog
 
 
 Indices and tables
