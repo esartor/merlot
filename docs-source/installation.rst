@@ -38,6 +38,7 @@ the buildout directory that you've just generated::
 
     $ cd merlot
     $ virtualenv --python=/usr/bin/python2.6 --no-site-packages .
+    $ source bin/activate
 
 Now you can run buildout::
 
