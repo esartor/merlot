@@ -18,7 +18,7 @@ $(document).ready(function() {
     if (preset_ranges_from_to.length){
         //we have to create the little calendar icon on the right
         preset_ranges_from_to.each(function(){
-            icon = '<img class="calendar-icon ui-datepicker-trigger" src="/@@/merlot/images/calendar.gif"/>';
+            icon = '<img class="calendar-icon ui-datepicker-trigger" src="/fanstatic/merlot/images/calendar.gif"/>';
             $(this).after(icon);
         });
         preset_ranges_from_to.daterangepicker({
@@ -47,7 +47,7 @@ $(document).ready(function() {
     if (only_ranged_star_end.length) {
         //we have to create the little calendar icon on the right
         only_ranged_star_end.each(function(){
-            icon = '<img class="calendar-icon ui-datepicker-trigger" src="/@@/merlot/images/calendar.gif"/>';
+            icon = '<img class="calendar-icon ui-datepicker-trigger" src="/fanstatic/merlot/images/calendar.gif"/>';
             $(this).after(icon);
         });
         only_ranged_star_end.daterangepicker({

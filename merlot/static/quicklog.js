@@ -3,9 +3,9 @@ $(document).ready(function() {
 
     //lets create a basic structure for the tooltip in the loglinks
     var log_tooltip = $('<div class="tooltip log-row">'+
-                            '<a class="delete"><img alt="'+merlot.i18n.DELETE_I18N+'"src="/@@/merlot/images/close.png"></a>'+
+                            '<a class="delete"><img alt="'+merlot.i18n.DELETE_I18N+'"src="/fanstatic/merlot/images/close.png"></a>'+
                             '<div class="ajax-load">'+
-                                '<img alt="ajax-load" src="/@@/merlot/images/ajax-load.gif">'+
+                                '<img alt="ajax-load" src="/fanstatic/merlot/images/ajax-load.gif">'+
                             '</div>'+
                             '<div class="log-form-container"></div>'+
                         '</div>');
@@ -66,7 +66,7 @@ $(document).ready(function() {
         $("#form\\.date", log_row).datepicker({
             "dateFormat": dateFormat,
             "showOn": "button",
-            "buttonImage": "/@@/merlot/images/calendar.gif",
+            "buttonImage": "/fanstatic/merlot/images/calendar.gif",
             "buttonImageOnly": true,
             "constrainInput": false
         });
@@ -86,7 +86,7 @@ $(document).ready(function() {
                 success: function(data){
                     row.empty();                
                     row.append('<div class="success">'+
-                                   '<h3><img alt="success" class="success" src="/@@/merlot/images/check.png">'+merlot.i18n.SUCCESS_I18N+'</h3>'+
+                                   '<h3><img alt="success" class="success" src="/fanstatic/merlot/images/check.png">'+merlot.i18n.SUCCESS_I18N+'</h3>'+
                                    '<a class="more-logs" href="#">'+merlot.i18n.MORE_I18N+'?</a>'+
                                 '</div>');
                     $('.success', row).hide().fadeIn('slow');
