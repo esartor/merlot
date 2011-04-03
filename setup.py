@@ -38,6 +38,12 @@ setup(name='Merlot',
                         'zope.app.schema',
                         'zope.pluggableauth',
                         'zope.i18n',
+                        'fanstatic',
+                        'zope.fanstatic',
                         # Add extra requirements here
                         ],
+      entry_points={
+          'fanstatic.libraries': [
+              'merlot = merlot.resource:library',
+          ]}
       )

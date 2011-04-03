@@ -50,29 +50,29 @@ the site to test that we can't access any pages::
     >>> browser = Browser()
     >>> browser.open('http://localhost/app')
     >>> browser.url
-    'http://localhost/app/@@login?camefrom=%2Fapp%2F%40%40index'
+    'http://localhost/app/@@login?camefrom=http%3A%2F%2Flocalhost%2Fapp%2F%40%40index'
 
 We can't access the projects container::
 
     >>> browser.open('http://localhost/app/projects')
     >>> browser.url
-    'http://localhost/app/@@login?camefrom=%2Fapp%2Fprojects%2F%40%40index'
+    'http://localhost/app/@@login?camefrom=http%3A%2F%2Flocalhost%2Fapp%2Fprojects%2F%40%40index'
 
 We can't access the reports either::
 
     >>> browser.open('http://localhost/app/@@logs-report')
     >>> browser.url
-    'http://localhost/app/@@login?camefrom=%2Fapp%2F%40%40logs-report'
+    'http://localhost/app/@@login?camefrom=http%3A%2F%2Flocalhost%2Fapp%2F%40%40logs-report'
 
     >>> browser.open('http://localhost/app/@@tasks-report')
     >>> browser.url
-    'http://localhost/app/@@login?camefrom=%2Fapp%2F%40%40tasks-report'
+    'http://localhost/app/@@login?camefrom=http%3A%2F%2Flocalhost%2Fapp%2F%40%40tasks-report'
 
 We can't access the clients container::
 
     >>> browser.open('http://localhost/app/clients')
     >>> browser.url
-    'http://localhost/app/@@login?camefrom=%2Fapp%2Fclients%2F%40%40index'
+    'http://localhost/app/@@login?camefrom=http%3A%2F%2Flocalhost%2Fapp%2Fclients%2F%40%40index'
 
 Now we authenticate using the user we created using the login form::
 
@@ -250,7 +250,7 @@ Now let's try to change our own password::
 As our credentials changed, we are kicked off the site::
 
     >>> browser.url
-    'http://localhost/app/@@login?camefrom=%2Fapp%2Fusers%2F%40%40index'
+    'http://localhost/app/@@login?camefrom=http%3A%2F%2Flocalhost%2Fapp%2Fusers%2F%40%40index'
 
 The old credentials are no longer valid::
 
