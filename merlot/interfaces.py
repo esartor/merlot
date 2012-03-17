@@ -156,12 +156,17 @@ class IProject(Interface):
     """A simple project"""
     title = schema.TextLine(title=_(u'Title'), required=True)
     description = schema.Text(title=_(u'Description'), required=False)
+    client = RelationChoice(
+        title=_(u'Client'),
+        source=ClientSource(),
+        required=True
+    )
     status = schema.Choice(
         title=_(u'Status'),
-        required=False,
+        required=True,
         description=_(u'The status the project is in'),
         vocabulary='merlot.ProjectStatusVocabulary',
-        default=u'in progress',
+        default=u'In progress',
     )
     # chronic = schema.Bool(title=u'Chronic', required=True)
     start_date = schema.Date(
@@ -169,9 +174,6 @@ class IProject(Interface):
         required=True,
     )
     end_date = schema.Date(title=_(u'End date'), required=False)
-    client = RelationChoice(title=_(u'Client'),
-                                  source=ClientSource(),
-                                  required=True)
 
     @invariant
     def startBeforeEnd(project):
@@ -197,16 +199,16 @@ class ITask(Interface):
     description = schema.Text(title=_(u'Description'), required=False)
     priority = schema.Choice(
         title=_(u'Priority'),
-        required=False,
+        required=True,
         vocabulary='merlot.TaskPriorityVocabulary',
-        default=u'normal',
+        default=u'Normal',
     )
     status = schema.Choice(
         title=_(u'Status'),
-        required=False,
+        required=True,
         description=_(u'The status the task is in'),
         vocabulary='merlot.ProjectStatusVocabulary',
-        default=u'in progress',
+        default=u'In progress',
     )
     start_date = schema.Date(
         title=_(u'Start date'),
@@ -315,6 +317,7 @@ class ILogsReport(Interface):
     """The logs report form"""
     project_or_client = schema.Choice(
         title=_(u'Project'),
+        description=_('Select a project'),
         required=True,
         vocabulary='merlot.ProjectVocabulary',
         default=u'All projects',
@@ -329,6 +332,7 @@ class ILogsReport(Interface):
     )
     user = schema.Choice(
         title=_(u'User'),
+        description=_('Select a user'),
         required=True,
         vocabulary='merlot.UserVocabulary',
         default='All users',
@@ -339,6 +343,7 @@ class ITasksReport(Interface):
     """The tasks report form"""
     projects = schema.Choice(
         title=_(u'Project'),
+        description=_('Select a project'),
         required=True,
         vocabulary='merlot.ProjectVocabulary',
         default=u'All projects',
@@ -353,6 +358,7 @@ class ITasksReport(Interface):
     )
     user = schema.Choice(
         title=_(u'User'),
+        description=_('Select a user'),
         required=True,
         vocabulary='merlot.UserVocabulary',
         default='All users',
