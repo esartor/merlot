@@ -7,7 +7,7 @@ $(document).ready(function() {
 
 
     function dateTranslatorSetup(input) {
-        input.before('<span class="date-translated">'+merlot.i18n.TYPE_DATE_BELOW_I18N+'</span>');
+        input.before('<div class="hint date-translated">'+merlot.i18n.TYPE_DATE_BELOW_I18N+'</div>');
     };    
     
     $("#form\\.date").datepicker({"dateFormat": dateFormat});
@@ -240,7 +240,7 @@ function manageFlashMessages() {
 }
 function dateTranslator(date_input, date_translated) {
     // code from http://www.datejs.com/ demos
-    var messages = "no match";
+    var messages = "No match";
     var input = date_input, date_string = date_translated, date = null;
     var input_empty = (date_input.val() === '') ? '' : date_input.val(), empty_string = merlot.i18n.TYPE_DATE_BELOW_I18N;
     input.val(input_empty);
@@ -248,6 +248,7 @@ function dateTranslator(date_input, date_translated) {
     input.keyup(
         function (e) {
             date_string.removeClass();
+            date_string.addClass('hint');
             date_string.addClass('date-translated');
             if (input.val().length > 0) {
                 date = Date.parse(input.val());

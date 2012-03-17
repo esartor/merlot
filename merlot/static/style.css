@@ -497,6 +497,19 @@ form input {
     background-image:url(jquery-ui/css/ui-lightness/images/ui-icons_228ef1_256x240.png);
 }
 
+/* Report forms tweaks */
+#tasks-report-form #form\.project_or_client,
+#tasks-report-form #form\.user,
+#logs-report-form #form\.project_or_client,
+#logs-report-form #form\.user {
+    margin-top:2px;
+}
+
+#logs-report-form #form\.actions\.submit,
+#tasks-report-form #form\.actions\.submit {
+    margin-top:35px;
+}
+
 /*TABLES STYLE*/
 .data-table {
     width:100%;
@@ -566,6 +579,10 @@ td.actions {
     font-size:12px;
 }
 
+.ui-daterangepicker li.preset_0 {
+    margin-top: 0.5em !important;
+}
+
 
 /*LAYOUT HELPERS*/
 .row {
@@ -614,16 +631,16 @@ td.actions {
 #dashboard .field-container .error,
 .log-row .field-container .error,
 .widget .date-translated.error{
-    background:url("images/problem.png") no-repeat scroll 0 4px transparent;
+    background:url("images/problem.png") no-repeat scroll 0 0 transparent;
+    padding-left: 18px;
 }
 #dashboard .field-container .accept,
 .log-row .field-container .accept,
 .widget .date-translated.accept{
-    background:url("images/accept.png") no-repeat scroll 0 4px transparent;
+    background:url("images/accept.png") no-repeat scroll 0 0 transparent;
+    padding-left: 18px;
 }
-.date-translated {
-    padding-left:18px;
-}
+
 /*ajax log box*/
 .log-row {
     display:none;
@@ -726,4 +743,5 @@ td.actions {
   .tipsy-south { background-position: bottom center; }
   .tipsy-east { background-position: right center; }
   .tipsy-west { background-position: left center; }
+
 
