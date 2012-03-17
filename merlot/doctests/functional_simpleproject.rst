@@ -62,6 +62,11 @@ required fields::
     >>> 'Required input is missing' in browser.contents
     True
 
+The project status defaults to In progress::
+
+    >>> browser.getControl(name='form.status').value
+    ['In progress']
+
 Also, the start date is automatically set to today::
 
     >>> from datetime import datetime, timedelta
@@ -99,12 +104,21 @@ generated based on the title we used::
     >>> 'Project view: Develop a web app' in browser.contents
     True
 
-Projects can contain tasks, so let's create a task. Once again, lets if we set
-an end date prior to the start date, we get a validation error::
+Projects can contain tasks, so let's create a task, but first let's verify that
+the `priority` field defaults to `Normal`, that the `status` field defaults to
+`In progress` and that `start_date` default to the current date::
 
     >>> browser.getLink('Add new Task').click()
+    >>> browser.getControl(name='form.priority').value
+    ['Normal']
+    >>> browser.getControl(name='form.status').value
+    ['In progress']
     >>> browser.getControl(name='form.start_date').value == today
     True
+
+No we will fill some fields and submit the form. Once again, if we set an end
+date prior to the start date, we get a validation error::
+
     >>> browser.getControl(name="form.title").value = u'Define requirements'
     >>> browser.getControl(name='form.end_date').value = yesterday
     >>> browser.getControl("Add task").click()
