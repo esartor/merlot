@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Development/Unknown\n"
-"POT-Creation-Date: Sun Mar 18 16:33:50 2012\n"
-"PO-Revision-Date: 2012-03-18 16:34-0300\n"
+"POT-Creation-Date: Sun Mar 18 16:44:41 2012\n"
+"PO-Revision-Date: 2012-03-18 16:45-0300\n"
 "Last-Translator: Emanuel Sartor <emanuel@menttes.com>\n"
 "Language-Team: Spanish\n"
 "Language: es\n"
@@ -161,8 +161,8 @@ msgid "You have not logged time in any task nor starred any task."
 msgstr "Usted no registró tiempo ni marcó ninguna tarea como favorita."
 
 #: merlot/app_templates/footer.pt:5
-msgid "Merlot &mdash; Project Management Software &copy; 2010-2011 Menttes"
-msgstr "Merlot &mdash; Sofware de Gestión de Proyectos &copy; 2010-2011 Menttes"
+msgid "Merlot &mdash; Project Management Software &copy; 2010-2012 Menttes"
+msgstr "Merlot &mdash; Sofware de Gestión de Proyectos &copy; 2010-2012 Menttes"
 
 #: merlot/app_templates/form.pt:11
 #: merlot/app_templates/form.pt:19
@@ -852,3 +852,4 @@ msgstr "Interno"
 #: merlot/vocabularies.py:93
 msgid "Individual"
 msgstr "Individuo"
+
