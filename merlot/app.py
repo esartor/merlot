@@ -346,7 +346,6 @@ class DeleteConfirmationForm(grok.Form):
         self.widgets['id'].setRenderedValue(id)
         self.widgets['id'].type = 'hidden'
 
-        qst = 'Are you sure you want to delete the %s item?'
         item = ''
         if hasattr(self.context, 'content_type') and \
            self.context.content_type == 'Log':
@@ -357,7 +356,9 @@ class DeleteConfirmationForm(grok.Form):
             item = '"%s"' % self.context.title
         else:
             item = '"%s"' % self.context.id
-        self.label = qst % (item,)
+        qst = _('Are you sure you want to delete the ${name} item?',
+                mapping={u'name': item})
+        self.label = qst
 
     @grok.action(_(u'Delete'))
     def delete(self, **data):
