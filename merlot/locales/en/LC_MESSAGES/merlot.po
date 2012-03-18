@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Development/Unknown\n"
-"POT-Creation-Date: Sun Mar 18 16:33:50 2012\n"
+"POT-Creation-Date: Sun Mar 18 16:44:41 2012\n"
 "PO-Revision-Date: 2011-01-01 16:45-0300\n"
 "Last-Translator: Emanuel Sartor <emanuel@menttes.com>\n"
 "Language-Team: English\n"
@@ -169,7 +169,7 @@ msgid "You have not logged time in any task nor starred any task."
 msgstr ""
 
 #: merlot/app_templates/footer.pt:5
-msgid "Merlot &mdash; Project Management Software &copy; 2010-2011 Menttes"
+msgid "Merlot &mdash; Project Management Software &copy; 2010-2012 Menttes"
 msgstr ""
 
 #: merlot/app_templates/form.pt:11 merlot/app_templates/form.pt:19
