@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Development/Unknown\n"
-"POT-Creation-Date: Sun Mar 18 16:44:41 2012\n"
+"POT-Creation-Date: Sun Mar 18 17:05:32 2012\n"
 "PO-Revision-Date: 2011-01-01 16:45-0300\n"
 "Last-Translator: Emanuel Sartor <emanuel@menttes.com>\n"
 "Language-Team: English\n"
@@ -26,7 +26,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: merlot/app.py:161 merlot/app.py:202
-#: merlot/client_templates/client_index.pt:39
+#: merlot/project_templates/projectcontainer_index.pt:6
+#: merlot/client_templates/client_index.pt:38
 msgid "Projects"
 msgstr ""
 
@@ -263,28 +264,28 @@ msgid "Client added."
 msgstr ""
 
 #. Default: "edit"
-#: merlot/client_templates/client_index.pt:12
+#: merlot/client_templates/client_index.pt:11
 msgid "img_alt_edit_action"
 msgstr ""
 
 #. Default: "delete"
-#: merlot/client_templates/client_index.pt:24
+#: merlot/client_templates/client_index.pt:23
 msgid "img_alt_delete_action"
 msgstr ""
 
-#: merlot/client_templates/client_index.pt:36
+#: merlot/client_templates/client_index.pt:35
 msgid "Client view: ${title}"
 msgstr ""
 
-#: merlot/client_templates/client_index.pt:50
+#: merlot/client_templates/client_index.pt:49
 msgid "Start Date"
 msgstr ""
 
-#: merlot/client_templates/client_index.pt:51
+#: merlot/client_templates/client_index.pt:50
 msgid "End Date"
 msgstr ""
 
-#: merlot/client_templates/client_index.pt:67
+#: merlot/client_templates/client_index.pt:66
 msgid "This client has no projects"
 msgstr ""
 
@@ -331,7 +332,10 @@ msgid "Client"
 msgstr ""
 
 #: merlot/interfaces.py:165 merlot/interfaces.py:207
-#: merlot/client_templates/client_index.pt:52
+#: merlot/project_templates/project_index.pt:100
+#: merlot/project_templates/projects_listing.pt:8
+#: merlot/app_templates/dashboard.pt:34
+#: merlot/client_templates/client_index.pt:51
 msgid "Status"
 msgstr ""
 
@@ -359,7 +363,9 @@ msgstr ""
 
 #: merlot/interfaces.py:19 merlot/interfaces.py:69 merlot/interfaces.py:152
 #: merlot/interfaces.py:157 merlot/interfaces.py:198 merlot/interfaces.py:276
-#: merlot/interfaces.py:281 merlot/client_templates/client_index.pt:49
+#: merlot/interfaces.py:281 merlot/project_templates/project_index.pt:101
+#: merlot/client_templates/client_index.pt:48
+#: merlot/client_templates/clientcontainer_index.pt:26
 msgid "Title"
 msgstr ""
 
@@ -576,7 +582,7 @@ msgstr ""
 #: merlot/project_templates/projects_listing.pt:34
 #: merlot/reports_templates/logsreport_viewlet.pt:32
 #: merlot/reports_templates/tasksreport_viewlet.pt:41
-#: merlot/client_templates/client_index.pt:7
+#: merlot/client_templates/client_index.pt:6
 #: merlot/client_templates/clientcontainer_index.pt:38
 #: merlot/auth_templates/userfolder_index.pt:37
 msgid "edit-action-title"
@@ -588,7 +594,7 @@ msgstr ""
 #: merlot/project_templates/projects_listing.pt:41
 #: merlot/reports_templates/logsreport_viewlet.pt:40
 #: merlot/reports_templates/tasksreport_viewlet.pt:49
-#: merlot/client_templates/client_index.pt:19
+#: merlot/client_templates/client_index.pt:18
 #: merlot/client_templates/clientcontainer_index.pt:41
 #: merlot/auth_templates/userfolder_index.pt:45
 msgid "delete-action-title"
@@ -596,7 +602,7 @@ msgstr ""
 
 #: merlot/project_templates/project_index.pt:15
 #: merlot/project_templates/task_index.pt:15
-#: merlot/client_templates/client_index.pt:24
+#: merlot/client_templates/client_index.pt:23
 msgid "${img} Delete"
 msgstr ""
 
@@ -655,7 +661,7 @@ msgstr ""
 
 #: merlot/project_templates/project_index.pt:9
 #: merlot/project_templates/task_index.pt:9
-#: merlot/client_templates/client_index.pt:12
+#: merlot/client_templates/client_index.pt:11
 msgid "${img} Edit"
 msgstr ""
 
