@@ -434,8 +434,8 @@ class I18nJavascript(grok.View):
     def render(self):
         messages = {
             'DELETE_I18N': _('delete'),
-            'SUCCESS_I18N': _('Success'),
-            'MORE_I18N': _('More'),
+            'SUCCESS_I18N': _('The log was successfully saved'),
+            'MORE_I18N': _('Add another log to this task'),
             'ENTER_DATE_HERE_I18N': _("Enter a date here"),
             'TYPE_DATE_BELOW_I18N': _("Type a date below"),
             'TODAY_I18N': _('Today'),

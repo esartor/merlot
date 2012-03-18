@@ -403,6 +403,7 @@ img {
 form .hint {
     color:#555555;
     font-size:0.8em;
+    margin-bottom:1px;
 }
 form .field {
      margin-bottom:0.8em;
@@ -498,13 +499,6 @@ form input {
 }
 
 /* Report forms tweaks */
-#tasks-report-form #form\.project_or_client,
-#tasks-report-form #form\.user,
-#logs-report-form #form\.project_or_client,
-#logs-report-form #form\.user {
-    margin-top:2px;
-}
-
 #logs-report-form #form\.actions\.submit,
 #tasks-report-form #form\.actions\.submit {
     margin-top:35px;
@@ -583,6 +577,9 @@ td.actions {
     margin-top: 0.5em !important;
 }
 
+img.calendar-icon {
+    margin-left: 2px;
+}
 
 /*LAYOUT HELPERS*/
 .row {
@@ -644,9 +641,9 @@ td.actions {
 /*ajax log box*/
 .log-row {
     display:none;
-	padding:5px;
-	width:21em;
-	height:15em;
+	padding:3px;
+	width:22em;
+	height:16em;
 	background:#EEE url("images/point-arrow.png") no-repeat scroll right center;
     border: 5px solid #CCCCCC;
     border-radius:7px 7px 7px 7px;
@@ -694,20 +691,17 @@ td.actions {
     font-weight: bold;
     padding: 5px 1em 5px 1em;
     margin-right:1em;
+    margin-top:1em;
 }
-.logged-data {
-    padding-top: 1em;
+.log-row div.success {
+    padding-top: 55px;
+    text-align: center;
 }
-.logged-data .header,
-.field-container .header{
-    font-weight:bold;
+.log-row img.success {
+    padding-right: 5px;
 }
-.logged-data .data {
-    padding-right:1em;
-    color:#666;
-}
-.logged-data .success {
-    vertical-align:middle;
+.log-row a.more-logs {
+    margin-top: 15px;
 }
 #reports-listing {
     padding-left: 20px;
