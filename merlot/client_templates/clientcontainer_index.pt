@@ -33,7 +33,7 @@
             <tr>
               <td><a class="linkeable" href="" tal:content="client/title"
                      tal:attributes="href client/id"/></td>
-              <td tal:content="client/type" />
+              <td tal:content="client/type" i18n:translate="" />
               <td class="actions">
                 <a class="action edit" title="Edit" ref="" tal:attributes="href string:${client/id}/edit" 
                     i18n:translate="" i18n:attributes="title edit-action-title">

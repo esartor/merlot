@@ -1,5 +1,4 @@
-<div class="view-actions-wrapper"
-     xmlns:tal="http://xml.zope.org/namespaces/tal"
+<div xmlns:tal="http://xml.zope.org/namespaces/tal"
      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
      i18n:domain="merlot">
 
@@ -29,7 +28,7 @@
            Delete
     </a>
   </div>
-</div>
+
 <div id="client">
     <h1 class="edition" i18n:translate="">
       Client view:
@@ -58,7 +57,7 @@
               <td> <a tal:content="project/title" href="" tal:attributes="href string:${view/application_url}/projects/${project/id}"/></td>
               <td tal:content="project/start_date" />
               <td tal:content="project/end_date" />
-              <td tal:content="project/status" />
+              <td tal:content="project/status" i18n:translate="" />
             </tr>
           </tal:block>
         </tbody>
@@ -67,5 +66,4 @@
     <p tal:condition="not: viewlet/projects" i18n:translate="">This client has no projects</p>
 </div>
 
-
-
+</div>
