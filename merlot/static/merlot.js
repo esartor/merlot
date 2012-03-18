@@ -296,11 +296,10 @@ function listingGraphs() {
         
     var hoursGraph = function(row) {
         //layout setup
-        var canvas_elem = '<canvas width="230" height="30"></canvas>'
-        var est_el = $('.estimate', row);
+        var canvas_elem = '<canvas width="230" height="32"></canvas>';
         var woh_el = $('.worked-hours', row);
         var rem_el = $('.remaining', row);
-        est_el.before('<td class="hours-graph">'+canvas_elem+'</td>');
+        var est_el = $('.estimate', row);
         
         var th_hoursusage = $('<th class="hours-usage-header">'+merlot.i18n.HOURS_USAGE_I18N+'</th>');
         estimate_header.before(th_hoursusage);
@@ -312,6 +311,8 @@ function listingGraphs() {
         var worked_hours = woh_el.html() ? woh_el.html()*1 : 0;
         var remaining_hours = rem_el.html() ? rem_el.html()*1 : 0;
         if (estimation) {
+            est_el.before('<td class="hours-graph">'+canvas_elem+'</td>');
+
             //bounding box(worked_hours / estimation) * 100;
             var box = 230;
             var lmargin = 15;
@@ -392,12 +393,8 @@ function listingGraphs() {
                 ctx.fillText((porcentage < 100 ? Math.round(porcentage) : '100') + "%", proportion+3, 5);
             }
         } else {
-            if (est_el.length){
-                canvas = $('.hours-graph canvas', row)[0];
-                var ctx = canvas.getContext('2d'); 
-
-                ctx.fillStyle = "#000";
-                ctx.fillText(worked_hours +' hours', 0, 20);
+            if (est_el.length) {
+                est_el.before('<td class="worked-hours">'+worked_hours +' '+merlot.i18n.HOURS_I18N+'</td>');
             }
         }
         
@@ -421,19 +418,27 @@ function listingGraphs() {
                 var diff = e-s;
                 var days = Math.floor(diff / (1000*60*60*24));
                 if (days < 0) {
-                    days = -days
-                    var days_status = ' ' + merlot.i18n.BEHIND_I18N;
+                    days = -days;
+                    if (days == 1) {
+                        var days_status = days + ' ' + merlot.i18n.DAY_BEHIND_I18N;
+                    } else {
+                        var days_status = days + ' ' + merlot.i18n.DAYS_BEHIND_I18N;
+                    }
                 } else {
-                    var days_status = '';
+                    if (days == 1) {
+                        var days_status = days + ' ' + merlot.i18n.DAY_I18N;
+                    } else {
+                        var days_status = days + ' ' + merlot.i18n.DAYS_I18N;
+                    }
                 }
-                td.html(days + ' ' + merlot.i18n.DAYS_I18N + days_status);
+                td.html(days_status);
             } else {
                 if (!end_date) {
                     td.html(merlot.i18n.NO_DEADLINE_I18N);
                 }
             }
         } else {
-            td.html('completed');
+            td.html(merlot.i18n.COMPLETED_I18N);
         }
         start_date_dom.before(td);
         start_date_dom.remove();
