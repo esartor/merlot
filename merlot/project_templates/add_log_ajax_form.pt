@@ -15,23 +15,20 @@
             <!-- <input type="text" value="" size="3" name="form.remaining" id="form.remaining" class="textType"> -->
         </div>
         <div class="field-container">
-            <span class="header" i18n:translate="">Description: </span>
-            <textarea rows="3" name="form.description" id="form.description" cols="26"></textarea>
-        </div>
-        <div class="field-container">        
-            <span class="date-translated"></span>            
-        </div>
-        <div class="field-container">
             <span class="header" i18n:translate="">Date:</span>
+            <div class="date-translated hint"></div>
             <input type="text" value="" size="12" name="form.date" id="form.date" class="textType"/>
         </div>
 
-    <!-- render all the action submit buttons -->
-    <span class="actionButtonsLog" tal:condition="view/availableActions">
-      <input tal:repeat="action view/actions"
-             tal:replace="structure action/render" />
-    </span>
-
+        <div class="field-container">
+            <span class="header" i18n:translate="">Description: </span>
+            <textarea rows="3" name="form.description" id="form.description" cols="26"></textarea>
+        </div>
+        <!-- render all the action submit buttons -->
+        <span class="actionButtonsLog" tal:condition="view/availableActions">
+          <input tal:repeat="action view/actions"
+                 tal:replace="structure action/render" />
+        </span>
     </form>
 </body>
 </html>

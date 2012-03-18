@@ -87,7 +87,7 @@ $(document).ready(function() {
                     row.empty();                
                     row.append('<div class="success">'+
                                    '<h3><img alt="success" class="success" src="/fanstatic/merlot/images/check.png">'+merlot.i18n.SUCCESS_I18N+'</h3>'+
-                                   '<a class="more-logs" href="#">'+merlot.i18n.MORE_I18N+'?</a>'+
+                                   '<a class="more-logs" href="#">'+merlot.i18n.MORE_I18N+'</a>'+
                                 '</div>');
                     $('.success', row).hide().fadeIn('slow');
                     more_logs_link = $('.more-logs', row);
