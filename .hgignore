@@ -1,9 +1,11 @@
 develop-eggs/
 include/
 var/
+log/
 parts/
 .installed.cfg
 lib/
+backups/
 bin/
 docs/
 coverage/
