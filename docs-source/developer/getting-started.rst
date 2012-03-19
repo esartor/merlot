@@ -41,7 +41,7 @@ requirements for Merlot.
 
 Finally, we can start the server, which will run in port 8080::
 
-    $ merlot
+    $ merlot fg
 
 First steps to play with the system
 -----------------------------------
