@@ -20,6 +20,7 @@ ChangeLog
 * Tweaked quicklog style and update some wordings. [emanuel]
 * Fixed default values for some fields in the task and project models.
   [emanuel]
+* Added buildout deployment configuration. [emanuel]
 
 **0.1 - 2011-03-24**
 

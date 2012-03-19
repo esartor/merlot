@@ -47,7 +47,7 @@ Now you can run buildout::
 
 And you are ready to start Merlot::
 
-    $ merlot
+    $ merlot fg
 
 This will start the server on port 8080 with basic authentication in front.
 
