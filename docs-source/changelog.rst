@@ -8,7 +8,7 @@ ChangeLog
 * Silvestre Huens (quimera)
 * Juan A. Diaz (nueces)
 
-**0.2 - unreleased**
+**0.2 - 2012-03-18**
 
 * Upgraded Grok version to 1.4.1. [emanuel]
 * Added Japanese translation contributed by OCHIAI Gouji. [emanuel]
