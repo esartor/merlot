@@ -1,3 +1,4 @@
+eggs/
 develop-eggs/
 include/
 var/
@@ -12,6 +13,7 @@ coverage/
 extends-cache/*
 Merlot.egg-info/
 docs-source/developer/_doctests/
+.Python
 
 syntax: glob
 *.pyc
